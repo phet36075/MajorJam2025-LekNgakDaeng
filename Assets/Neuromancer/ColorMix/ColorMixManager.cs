@@ -31,16 +31,6 @@ public class ColorMixManager : MonoBehaviour
 
     public void OnColorMixed(string ColorName)
     {
-        /*
-        if (ColorMixCount >= 2)
-        {
-            Player_SpR.color = defaultColor;
-            ColorMixCount = 0;
-            Color_1 = null;
-            Color_2 = null;
-        }
-        */
-        
 
         if (ColorMixCount == 0)
         {
