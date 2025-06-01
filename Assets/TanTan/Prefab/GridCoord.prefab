@@ -138,9 +138,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: addf99e357f88fe41b23fe7da4d615df, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mask:
+  playerMask:
     serializedVersion: 2
     m_Bits: 8
+  goalMask:
+    serializedVersion: 2
+    m_Bits: 64
   x: 0
   y: 0
   UpperTile: {x: 0, y: 0}

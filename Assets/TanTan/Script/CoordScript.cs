@@ -3,8 +3,10 @@ using UnityEngine;
 public class CoordScript : MonoBehaviour
 {
     Player player => FindAnyObjectByType<Player>();
+    Goal goal => FindAnyObjectByType<Goal>();
 
-    [SerializeField] LayerMask mask;
+    [SerializeField] LayerMask playerMask;
+    [SerializeField] LayerMask goalMask;
 
     [Header("Coordinate")]
     [SerializeField] int x;
@@ -17,10 +19,13 @@ public class CoordScript : MonoBehaviour
     public Vector2 RightTile = Vector2.zero;
     #endregion
 
+    bool isAPAdd =  false;
+
     // Update is called once per frame
     void Update()
     {
         PlayerCollide();
+        GoalCollide();
         UpperTile = GetUpperTile();
         LowerTile = GetLowerTile();
         LeftTile = GetLeftTile();
@@ -29,11 +34,32 @@ public class CoordScript : MonoBehaviour
 
     void PlayerCollide()
     {
-        if(Physics2D.OverlapCircle(transform.position, 0.1f, mask))
+        if (Physics2D.OverlapCircle(transform.position, 0.1f, playerMask))
         {
-            Debug.Log("Player is on Coord: " + x + ", " + y);
             player.SetCoord(this);
+            if (!isAPAdd)
+            {
+                player.ResetAP();
+                isAPAdd = true;
+            }
         }
+        else
+            isAPAdd = false;
+    }
+
+    void GoalCollide()
+    {
+        if (Physics2D.OverlapCircle(transform.position, 0.1f, goalMask))
+        {
+            goal.SetCoord(this);
+            if (!isAPAdd)
+            {
+                goal.ResetAP();
+                isAPAdd = true;
+            }
+        }
+        else
+            isAPAdd = false;
     }
 
     public void SetCoord(int x, int y)

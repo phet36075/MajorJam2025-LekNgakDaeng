@@ -2,9 +2,12 @@ using UnityEngine;
 using static UnityEngine.Rendering.DebugUI.Table;
 using UnityEngine.UIElements;
 using Unity.Mathematics;
+using System.Collections.Generic;
 
 public class GridManager : MonoBehaviour
 {
+    public static List<CoordScript> coord = new List<CoordScript>();
+
     [Header("Grid Size")]
     [SerializeField] int gridRow;
     [SerializeField] int gridColumn;
@@ -60,6 +63,7 @@ public class GridManager : MonoBehaviour
                 Vector3 cellCenter = origin + new Vector3(x * cellSizeX + cellSizeX / 2f, y * cellSizeY + cellSizeY / 2f, 0f);
                 GameObject gm = Instantiate(cellPrefab, cellCenter, Quaternion.identity, transform);
                 CoordScript cs = gm.GetComponent<CoordScript>();
+                coord.Add(cs);
                 cs.SetCoord(x, y);
                 gm.name = $"[{x},{y}]";
             }
@@ -74,15 +78,13 @@ public class GridManager : MonoBehaviour
         float cellWidth = Mathf.Abs(gridWidth);
         float cellHeight = Mathf.Abs(gridHeight);
 
-        float cellSize = cellHeight * cellWidth;
-
         Gizmos.color = gridColor;
         Vector3 origin = transform.position;
 
         if (centerGrid)
         {
-            origin.x -= (gridColumn * cellSize) / 2f;
-            origin.y -= (gridRow * cellSize) / 2f;
+            origin.x -= (gridColumn * cellWidth) / 2f;
+            origin.y -= (gridRow * cellHeight) / 2f;
         }
 
         origin += (Vector3)offset;

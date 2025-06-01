@@ -1,10 +1,11 @@
-using Unity.VisualScripting;
+using System.Drawing;
 using UnityEngine;
 using UnityEngine.AI;
 
-public class Player : MonoBehaviour
+public class Goal : MonoBehaviour
 {
     NavMeshAgent agent => GetComponent<NavMeshAgent>();
+    Player player => FindAnyObjectByType<Player>();
 
     [Header("Coordinate")]
     [SerializeField] CoordScript coordinate;
@@ -21,11 +22,11 @@ public class Player : MonoBehaviour
 
         float tmp = 1000000;
 
-        foreach(CoordScript c in GridManager.coord)
+        foreach (CoordScript c in GridManager.coord)
         {
             float dis = Vector2.Distance(transform.position, c.transform.position);
 
-            if(tmp > dis)
+            if (tmp > dis)
             {
                 tmp = dis;
                 targetPos = c.transform.position;
@@ -37,33 +38,14 @@ public class Player : MonoBehaviour
     void Update()
     {
         agent.SetDestination(targetPos);
-        PlayerController();
     }
 
-    void PlayerController()
+    void MoveAwayFromPlayer()
     {
-        if(actionPoint <= 0) return;
-        if (Input.GetKeyDown(KeyCode.W) || Input.GetKeyDown(KeyCode.UpArrow))
-        {
-            targetPos = coordinate.UpperTile;
-        }
-        else if (Input.GetKeyDown(KeyCode.S) || Input.GetKeyDown(KeyCode.DownArrow))
-        {
-            targetPos = coordinate.LowerTile;
-        }
-        else if (Input.GetKeyDown(KeyCode.A) || Input.GetKeyDown(KeyCode.LeftArrow))
-        {
-            targetPos = coordinate.LeftTile;
-        }
-        else if (Input.GetKeyDown(KeyCode.D) || Input.GetKeyDown(KeyCode.RightArrow))
-        {
-            targetPos = coordinate.RightTile;
-        }
-        actionPoint--;
+        //float UpperTileDistanceFromPlayer
     }
-
 
     public void SetCoord(CoordScript cs) => coordinate = cs;
 
-    public void ResetAP() => actionPoint++;
+    public void ResetAP() => actionPoint = 1;
 }
