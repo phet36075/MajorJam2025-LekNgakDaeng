@@ -899,6 +899,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 2139754067}
     - target: {fileID: 4525303082312544220, guid: e9abc50e60f6afb4f9693564c0891604, type: 3}
+      propertyPath: plateCheckers.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 4525303082312544220, guid: e9abc50e60f6afb4f9693564c0891604, type: 3}
       propertyPath: 'plateCheckers.Array.data[0]'
       value: 
       objectReference: {fileID: 246547826}
