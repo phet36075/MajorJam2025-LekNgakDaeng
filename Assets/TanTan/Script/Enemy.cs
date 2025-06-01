@@ -1,8 +1,7 @@
-using System.Drawing;
 using UnityEngine;
 using UnityEngine.AI;
 
-public class Goal : MonoBehaviour
+public class Enemy : MonoBehaviour
 {
     NavMeshAgent agent => GetComponent<NavMeshAgent>();
     Player player => FindAnyObjectByType<Player>();
@@ -42,7 +41,45 @@ public class Goal : MonoBehaviour
     void OnPlayerMove()
     {
         Debug.Log("Player Moved");
-        MoveAwayFromPlayer();
+        EnemyMovement();
+    }
+
+    void EnemyMovement()
+    {
+        if(player.havWeapon)
+            MoveAwayFromPlayer();
+        else
+            MoveTowardPlayer();
+    }
+
+    void MoveTowardPlayer()
+    {
+        float upperTileDistanceFromPlayer = Vector2.Distance(coordinate.UpperTile.transform.position, player.transform.position);
+        float lowerTileDistanceFromPlayer = Vector2.Distance(coordinate.LowerTile.transform.position, player.transform.position);
+        float leftTileDistanceFromPlayer = Vector2.Distance(coordinate.LeftTile.transform.position, player.transform.position);
+        float rightTileDistanceFromPlayer = Vector2.Distance(coordinate.RightTile.transform.position, player.transform.position);
+
+        float minDistance = Mathf.Min(upperTileDistanceFromPlayer, lowerTileDistanceFromPlayer, leftTileDistanceFromPlayer, rightTileDistanceFromPlayer);
+        if (minDistance == upperTileDistanceFromPlayer)
+        {
+            if(!coordinate.UpperTile.isWall)
+                targetPos = coordinate.UpperTile.transform.position;
+        }
+        else if (minDistance == lowerTileDistanceFromPlayer)
+        {
+            if (!coordinate.LowerTile.isWall)
+                targetPos = coordinate.LowerTile.transform.position;
+        }
+        else if (minDistance == leftTileDistanceFromPlayer)
+        {
+            if (!coordinate.LeftTile.isWall)
+                targetPos = coordinate.LeftTile.transform.position;
+        }
+        else if (minDistance == rightTileDistanceFromPlayer)
+        {
+            if (!coordinate.RightTile.isWall)
+                targetPos = coordinate.RightTile.transform.position;
+        }
     }
 
     void MoveAwayFromPlayer()
@@ -55,19 +92,23 @@ public class Goal : MonoBehaviour
         float maxDistance = Mathf.Max(upperTileDistanceFromPlayer, lowerTileDistanceFromPlayer, leftTileDistanceFromPlayer, rightTileDistanceFromPlayer);
         if (maxDistance == upperTileDistanceFromPlayer)
         {
-            targetPos = coordinate.UpperTile.transform.position;
+            if (!coordinate.UpperTile.isWall)
+                targetPos = coordinate.UpperTile.transform.position;
         }
         else if (maxDistance == lowerTileDistanceFromPlayer)
         {
-            targetPos = coordinate.LowerTile.transform.position;
+            if (!coordinate.LowerTile.isWall)
+                targetPos = coordinate.LowerTile.transform.position;
         }
         else if (maxDistance == leftTileDistanceFromPlayer)
         {
-            targetPos = coordinate.LeftTile.transform.position;
+            if (!coordinate.LeftTile.isWall)
+                targetPos = coordinate.LeftTile.transform.position;
         }
         else if (maxDistance == rightTileDistanceFromPlayer)
         {
-            targetPos = coordinate.RightTile.transform.position;
+            if (!coordinate.RightTile.isWall)
+                targetPos = coordinate.RightTile.transform.position;
         }
     }
 

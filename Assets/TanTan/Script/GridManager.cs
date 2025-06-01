@@ -3,18 +3,21 @@ using static UnityEngine.Rendering.DebugUI.Table;
 using UnityEngine.UIElements;
 using Unity.Mathematics;
 using System.Collections.Generic;
+using UnityEngine.AI;
+using NavMeshPlus.Components;
 
 public class GridManager : MonoBehaviour
 {
     public static List<CoordScript> coord = new List<CoordScript>();
+    NavMeshSurface navMesh => FindAnyObjectByType<NavMeshSurface>();
 
     [Header("Grid Size")]
     [SerializeField] int gridRow;
     [SerializeField] int gridColumn;
 
     [Header("Grid Cell Size")]
-    [SerializeField] float gridWidth;
-    [SerializeField] float gridHeight;
+    public float gridWidth;
+    public float gridHeight;
 
     [Header("Grid Setup")]
     [SerializeField] Vector2 offset;
@@ -34,6 +37,10 @@ public class GridManager : MonoBehaviour
         DrawGrid();
     }
 
+    private void Start()
+    {
+        navMesh.BuildNavMesh();
+    }
 
     void DrawGrid()
     {

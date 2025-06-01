@@ -14,6 +14,9 @@ public class Player : MonoBehaviour
     [Header("Parameter")]
     [SerializeField] float walkInterval = 0.5f;
 
+    [Header("Resource")]
+    public bool havWeapon = false;
+
     bool isCooldown = false;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
@@ -48,25 +51,25 @@ public class Player : MonoBehaviour
         if(isCooldown) return;
         if (Input.GetKeyDown(KeyCode.W) || Input.GetKeyDown(KeyCode.UpArrow))
         {
-            targetPos = coordinate.UpperTile;
+            targetPos = coordinate.UpperTile.transform.position;
             StartCoroutine(WalkInterval(walkInterval));
             OnPlayerMoveSubscription.Instance.CheckPlayerMove();
         }
         else if (Input.GetKeyDown(KeyCode.S) || Input.GetKeyDown(KeyCode.DownArrow))
         {
-            targetPos = coordinate.LowerTile;
+            targetPos = coordinate.LowerTile.transform.position;
             StartCoroutine(WalkInterval(walkInterval));
             OnPlayerMoveSubscription.Instance.CheckPlayerMove();
         }
         else if (Input.GetKeyDown(KeyCode.A) || Input.GetKeyDown(KeyCode.LeftArrow))
         {
-            targetPos = coordinate.LeftTile;
+            targetPos = coordinate.LeftTile.transform.position;
             StartCoroutine(WalkInterval(walkInterval));
             OnPlayerMoveSubscription.Instance.CheckPlayerMove();
         }
         else if (Input.GetKeyDown(KeyCode.D) || Input.GetKeyDown(KeyCode.RightArrow))
         {
-            targetPos = coordinate.RightTile;
+            targetPos = coordinate.RightTile.transform.position;
             StartCoroutine(WalkInterval(walkInterval));
             OnPlayerMoveSubscription.Instance.CheckPlayerMove();
         }
@@ -80,4 +83,6 @@ public class Player : MonoBehaviour
         yield return new WaitForSeconds(time);
         isCooldown = false;
     }
+
+    public void SetWeapon(bool havAPao) => havWeapon = havAPao;
 }

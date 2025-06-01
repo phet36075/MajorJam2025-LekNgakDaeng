@@ -4,19 +4,27 @@ public class CoordScript : MonoBehaviour
 {
     Player player => FindAnyObjectByType<Player>();
     Goal goal => FindAnyObjectByType<Goal>();
+    Enemy enemy => FindAnyObjectByType<Enemy>();
+    public Wall wall;
 
+    [Header("Reference")]
     [SerializeField] LayerMask playerMask;
     [SerializeField] LayerMask goalMask;
+    [SerializeField] LayerMask enemyMask;
+    [SerializeField] LayerMask wallMask;
 
     [Header("Coordinate")]
     [SerializeField] int x;
     [SerializeField] int y;
 
+    [Header("Condition")]
+    public bool isWall = false;
+
     #region AdjacentTile
-    public Vector2 UpperTile = Vector2.zero;
-    public Vector2 LowerTile = Vector2.zero;
-    public Vector2 LeftTile = Vector2.zero;
-    public Vector2 RightTile = Vector2.zero;
+    public CoordScript UpperTile = null;
+    public CoordScript LowerTile = null;
+    public CoordScript LeftTile = null;
+    public CoordScript RightTile = null;
     #endregion
 
     bool isAPAdd =  false;
@@ -26,6 +34,7 @@ public class CoordScript : MonoBehaviour
     {
         PlayerCollide();
         GoalCollide();
+        EnemyCollide();
         UpperTile = GetUpperTile();
         LowerTile = GetLowerTile();
         LeftTile = GetLeftTile();
@@ -48,63 +57,81 @@ public class CoordScript : MonoBehaviour
         }
     }
 
+    void EnemyCollide()
+    {
+        if (Physics2D.OverlapCircle(transform.position, 0.1f, enemyMask))
+        {
+            enemy.SetCoord(this);
+        }
+    }
+
+    void WallCollide()
+    {
+        if (Physics2D.OverlapCircle(transform.position, 0.1f, wallMask))
+        {
+            isWall = true;
+        }
+    }
+
     public void SetCoord(int x, int y)
     {
         this.x = x;
         this.y = y;
     }
 
-    Vector2 GetUpperTile()
+    #region AdjacentTile
+    CoordScript GetUpperTile()
     {
         CoordScript[] cs = FindObjectsByType<CoordScript>(FindObjectsSortMode.None);
         foreach (CoordScript c in cs)
         {
             if (c.x == x && c.y == y + 1)
             {
-                return c.transform.position;
+                return c;
             }
         }
-        return this.transform.position;
+        return this;
     }
 
-    Vector2 GetLowerTile()
+    CoordScript GetLowerTile()
     {
         CoordScript[] cs = FindObjectsByType<CoordScript>(FindObjectsSortMode.None);
         foreach (CoordScript c in cs)
         {
             if (c.x == x && c.y == y - 1)
             {
-                return c.transform.position;
+                return c;
             }
         }
-        return this.transform.position;
+        return this;
     }
 
-    Vector2 GetLeftTile()
+    CoordScript GetLeftTile()
     {
         CoordScript[] cs = FindObjectsByType<CoordScript>(FindObjectsSortMode.None);
         foreach (CoordScript c in cs)
         {
             if (c.x == x - 1 && c.y == y)
             {
-                return c.transform.position;
+                return c;
             }
         }
-        return this.transform.position;
+        return this;
     }
 
-    Vector2 GetRightTile()
+    CoordScript GetRightTile()
     {
         CoordScript[] cs = FindObjectsByType<CoordScript>(FindObjectsSortMode.None);
         foreach (CoordScript c in cs)
         {
             if (c.x == x + 1 && c.y == y)
             {
-                return c.transform.position;
+                return c;
             }
         }
-        return this.transform.position;
+        return this;
     }
+    #endregion
 
     private void OnDrawGizmos()
     {
