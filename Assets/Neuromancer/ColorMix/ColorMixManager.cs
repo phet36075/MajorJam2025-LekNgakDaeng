@@ -1,11 +1,16 @@
 using UnityEngine;
 
+
+public enum ColorType
+{
+    Red, Yellow,Blue,Green,Orange,Purple,Default
+}
 public class ColorMixManager : MonoBehaviour
 {
     [SerializeField] private GameObject playerObj;
     private SpriteRenderer Player_SpR;
     private int ColorMixCount = 0;
-    private string Color_1, Color_2;
+    private ColorType Color_1, Color_2;
 
     [Header("Parameters")]
     [SerializeField] private Color defaultColor = Color.gray;
@@ -20,6 +25,8 @@ public class ColorMixManager : MonoBehaviour
         //Reference from Player Object Sprite Renderer
         Player_SpR = playerObj.GetComponent<SpriteRenderer>();
         Player_SpR.color = defaultColor;
+        Color_1 = ColorType.Default;
+        Color_2 = ColorType.Default;
     }
 
 
@@ -29,18 +36,18 @@ public class ColorMixManager : MonoBehaviour
         
     }
 
-    public void OnColorMixed(string ColorName)
+    public void OnColorMixed(ColorType color)
     {
 
         if (ColorMixCount == 0)
         {
-            Color_1 = ColorName;
+            Color_1 = color;
             Player_SpR.color = ColorMix();
             ColorMixCount+=1;
         }
         else if(ColorMixCount == 1)
         {
-            Color_2 = ColorName;
+            Color_2 = color;
             Player_SpR.color = ColorMix();
             ColorMixCount+=1;
         }
@@ -48,8 +55,8 @@ public class ColorMixManager : MonoBehaviour
         {
             Player_SpR.color = defaultColor;
             ColorMixCount = 0;
-            Color_1 = null;
-            Color_2 = null;
+            Color_1 = ColorType.Default;
+            Color_2 = ColorType.Default;
         }
 
         Debug.Log(ColorMixCount);
@@ -58,26 +65,26 @@ public class ColorMixManager : MonoBehaviour
     public Color ColorMix()
     {
         Color outputColor = defaultColor;
-        if(Color_1 != null && Color_2 == null)
+        if(Color_1 != ColorType.Default && Color_2 == ColorType.Default)
         {
             switch (Color_1)
             {
-                case "Red": outputColor = Red; break;
-                case "Blue": outputColor = Blue; break;
-                case "Yellow": outputColor = Yellow; break;
+                case ColorType.Red: outputColor = Red; break;
+                case ColorType.Blue: outputColor = Blue; break;
+                case ColorType.Yellow: outputColor = Yellow; break;
             }
         }
-        else if(Color_1 != null && Color_2 != null)
+        else if(Color_1 != ColorType.Default && Color_2 != ColorType.Default)
         {
-            if(Color_1 == "Red" && Color_2 == "Yellow" ||  Color_1 == "Yellow" && Color_2 == "Red")
+            if(Color_1 == ColorType.Red && Color_2 == ColorType.Yellow ||  Color_1 == ColorType.Yellow && Color_2 == ColorType.Red)
             {
                 outputColor = Orange;
             }
-            else if(Color_1 == "Red" && Color_2 == "Blue" || Color_1 == "Blue" && Color_2 == "Red")
+            else if(Color_1 == ColorType.Red && Color_2 == ColorType.Blue || Color_1 == ColorType.Blue && Color_2 == ColorType.Red)
             {
                 outputColor = Purple;
             }
-            else if(Color_1 == "Yellow" && Color_2 == "Blue" || Color_1 == "Blue" && Color_2 == "Yellow")
+            else if(Color_1 == ColorType.Yellow && Color_2 == ColorType.Blue || Color_1 == ColorType.Blue && Color_2 == ColorType.Yellow)
             {
                 outputColor = Green;
             }
@@ -86,14 +93,14 @@ public class ColorMixManager : MonoBehaviour
         return outputColor;
     }
 
-    public Color SetPaletteColor(string ColorName)
+    public Color SetPaletteColor(ColorType color)
     {
         Color SetColor = defaultColor;
-        switch (ColorName)
+        switch (color)
         {
-            case "Red": SetColor = Red; break;
-            case "Yellow": SetColor = Yellow; break;
-            case "Blue": SetColor = Blue; break;
+            case ColorType.Red: SetColor = Red; break;
+            case ColorType.Yellow: SetColor = Yellow; break;
+            case ColorType.Blue: SetColor = Blue; break;
         }
         return SetColor;
     }

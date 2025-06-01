@@ -521,7 +521,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5981a8cede6ade548b442755d9efec20, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ColorName: Blue
+  MainColor: 2
 --- !u!50 &618798079
 Rigidbody2D:
   serializedVersion: 5
@@ -697,7 +697,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5981a8cede6ade548b442755d9efec20, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ColorName: Red
+  MainColor: 0
 --- !u!50 &749322975
 Rigidbody2D:
   serializedVersion: 5
@@ -1726,7 +1726,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5981a8cede6ade548b442755d9efec20, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ColorName: Yellow
+  MainColor: 1
 --- !u!50 &1791212337
 Rigidbody2D:
   serializedVersion: 5

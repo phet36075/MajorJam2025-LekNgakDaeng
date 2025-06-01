@@ -501,7 +501,7 @@ MonoBehaviour:
   GoalPost: {fileID: 855901821}
   SpamKey: 100
   AltSpamKey: 275
-  PlayerSpeedIncrement: 0.5
+  PlayerSpeedIncrement: 0.25
   EnemySpeedIncrementRate: 10
   DefaultSpeed: 2
   MaxSpeedBonusCap: 10
