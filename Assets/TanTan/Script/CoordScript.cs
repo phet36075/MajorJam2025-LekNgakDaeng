@@ -37,14 +37,7 @@ public class CoordScript : MonoBehaviour
         if (Physics2D.OverlapCircle(transform.position, 0.1f, playerMask))
         {
             player.SetCoord(this);
-            if (!isAPAdd)
-            {
-                player.ResetAP();
-                isAPAdd = true;
-            }
         }
-        else
-            isAPAdd = false;
     }
 
     void GoalCollide()
@@ -52,14 +45,7 @@ public class CoordScript : MonoBehaviour
         if (Physics2D.OverlapCircle(transform.position, 0.1f, goalMask))
         {
             goal.SetCoord(this);
-            if (!isAPAdd)
-            {
-                goal.ResetAP();
-                isAPAdd = true;
-            }
         }
-        else
-            isAPAdd = false;
     }
 
     public void SetCoord(int x, int y)

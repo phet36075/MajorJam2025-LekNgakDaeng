@@ -32,6 +32,8 @@ public class Goal : MonoBehaviour
                 targetPos = c.transform.position;
             }
         }
+
+        OnPlayerMoveSubscription.Instance.OnPlayerMove += this.OnPlayerMove;
     }
 
     // Update is called once per frame
@@ -40,9 +42,36 @@ public class Goal : MonoBehaviour
         agent.SetDestination(targetPos);
     }
 
+    void OnPlayerMove()
+    {
+        Debug.Log("Player Moved");
+        MoveAwayFromPlayer();
+    }
+
     void MoveAwayFromPlayer()
     {
-        //float UpperTileDistanceFromPlayer
+        float upperTileDistanceFromPlayer = Vector2.Distance(coordinate.UpperTile, player.transform.position);
+        float lowerTileDistanceFromPlayer = Vector2.Distance(coordinate.LowerTile, player.transform.position);
+        float leftTileDistanceFromPlayer = Vector2.Distance(coordinate.LeftTile, player.transform.position);
+        float rightTileDistanceFromPlayer = Vector2.Distance(coordinate.RightTile, player.transform.position);
+
+        float maxDistance = Mathf.Max(upperTileDistanceFromPlayer, lowerTileDistanceFromPlayer, leftTileDistanceFromPlayer, rightTileDistanceFromPlayer);
+        if (maxDistance == upperTileDistanceFromPlayer)
+        {
+            targetPos = coordinate.UpperTile;
+        }
+        else if (maxDistance == lowerTileDistanceFromPlayer)
+        {
+            targetPos = coordinate.LowerTile;
+        }
+        else if (maxDistance == leftTileDistanceFromPlayer)
+        {
+            targetPos = coordinate.LeftTile;
+        }
+        else if (maxDistance == rightTileDistanceFromPlayer)
+        {
+            targetPos = coordinate.RightTile;
+        }
     }
 
     public void SetCoord(CoordScript cs) => coordinate = cs;

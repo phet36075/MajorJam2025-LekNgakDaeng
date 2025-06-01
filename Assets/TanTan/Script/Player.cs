@@ -1,3 +1,4 @@
+using System.Collections;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.AI;
@@ -10,8 +11,10 @@ public class Player : MonoBehaviour
     [SerializeField] CoordScript coordinate;
     [SerializeField] Vector2 targetPos = Vector2.zero;
 
-    [Header("Resource")]
-    [SerializeField] int actionPoint = 0;
+    [Header("Parameter")]
+    [SerializeField] float walkInterval = 0.5f;
+
+    bool isCooldown = false;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -42,28 +45,39 @@ public class Player : MonoBehaviour
 
     void PlayerController()
     {
-        if(actionPoint <= 0) return;
+        if(isCooldown) return;
         if (Input.GetKeyDown(KeyCode.W) || Input.GetKeyDown(KeyCode.UpArrow))
         {
             targetPos = coordinate.UpperTile;
+            StartCoroutine(WalkInterval(walkInterval));
+            OnPlayerMoveSubscription.Instance.CheckPlayerMove();
         }
         else if (Input.GetKeyDown(KeyCode.S) || Input.GetKeyDown(KeyCode.DownArrow))
         {
             targetPos = coordinate.LowerTile;
+            StartCoroutine(WalkInterval(walkInterval));
+            OnPlayerMoveSubscription.Instance.CheckPlayerMove();
         }
         else if (Input.GetKeyDown(KeyCode.A) || Input.GetKeyDown(KeyCode.LeftArrow))
         {
             targetPos = coordinate.LeftTile;
+            StartCoroutine(WalkInterval(walkInterval));
+            OnPlayerMoveSubscription.Instance.CheckPlayerMove();
         }
         else if (Input.GetKeyDown(KeyCode.D) || Input.GetKeyDown(KeyCode.RightArrow))
         {
             targetPos = coordinate.RightTile;
+            StartCoroutine(WalkInterval(walkInterval));
+            OnPlayerMoveSubscription.Instance.CheckPlayerMove();
         }
-        actionPoint--;
     }
-
 
     public void SetCoord(CoordScript cs) => coordinate = cs;
 
-    public void ResetAP() => actionPoint++;
+    IEnumerator WalkInterval(float time)
+    {
+        isCooldown = true;
+        yield return new WaitForSeconds(time);
+        isCooldown = false;
+    }
 }
