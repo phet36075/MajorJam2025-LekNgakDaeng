@@ -35,6 +35,7 @@ public class CoordScript : MonoBehaviour
         PlayerCollide();
         GoalCollide();
         EnemyCollide();
+        WallCollide();
         UpperTile = GetUpperTile();
         LowerTile = GetLowerTile();
         LeftTile = GetLeftTile();

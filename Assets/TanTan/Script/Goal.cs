@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using System.Drawing;
 using UnityEngine;
 using UnityEngine.AI;
@@ -47,27 +48,23 @@ public class Goal : MonoBehaviour
 
     void MoveAwayFromPlayer()
     {
-        float upperTileDistanceFromPlayer = Vector2.Distance(coordinate.UpperTile.transform.position, player.transform.position);
-        float lowerTileDistanceFromPlayer = Vector2.Distance(coordinate.LowerTile.transform.position, player.transform.position);
-        float leftTileDistanceFromPlayer = Vector2.Distance(coordinate.LeftTile.transform.position, player.transform.position);
-        float rightTileDistanceFromPlayer = Vector2.Distance(coordinate.RightTile.transform.position, player.transform.position);
+        var options = new List<(float distance, bool canMove, Vector2 position)>
+        {
+            (Vector2.Distance(coordinate.UpperTile.transform.position, player.transform.position), !coordinate.UpperTile.isWall, coordinate.UpperTile.transform.position),
+            (Vector2.Distance(coordinate.LowerTile.transform.position, player.transform.position), !coordinate.LowerTile.isWall, coordinate.LowerTile.transform.position),
+            (Vector2.Distance(coordinate.LeftTile.transform.position, player.transform.position), !coordinate.LeftTile.isWall, coordinate.LeftTile.transform.position),
+            (Vector2.Distance(coordinate.RightTile.transform.position, player.transform.position), !coordinate.RightTile.isWall, coordinate.RightTile.transform.position)
+        };
 
-        float maxDistance = Mathf.Max(upperTileDistanceFromPlayer, lowerTileDistanceFromPlayer, leftTileDistanceFromPlayer, rightTileDistanceFromPlayer);
-        if (maxDistance == upperTileDistanceFromPlayer)
+        options.Sort((b, a) => a.distance.CompareTo(b.distance));
+
+        foreach (var (distance, canMove, position) in options)
         {
-            targetPos = coordinate.UpperTile.transform.position;
-        }
-        else if (maxDistance == lowerTileDistanceFromPlayer)
-        {
-            targetPos = coordinate.LowerTile.transform.position;
-        }
-        else if (maxDistance == leftTileDistanceFromPlayer)
-        {
-            targetPos = coordinate.LeftTile.transform.position;
-        }
-        else if (maxDistance == rightTileDistanceFromPlayer)
-        {
-            targetPos = coordinate.RightTile.transform.position;
+            if (canMove)
+            {
+                targetPos = position;
+                return;
+            }
         }
     }
 

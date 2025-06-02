@@ -52,24 +52,28 @@ public class Player : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.W) || Input.GetKeyDown(KeyCode.UpArrow))
         {
             targetPos = coordinate.UpperTile.transform.position;
+            if (coordinate.UpperTile.isWall) return;
             StartCoroutine(WalkInterval(walkInterval));
             OnPlayerMoveSubscription.Instance.CheckPlayerMove();
         }
         else if (Input.GetKeyDown(KeyCode.S) || Input.GetKeyDown(KeyCode.DownArrow))
         {
             targetPos = coordinate.LowerTile.transform.position;
+            if (coordinate.LowerTile.isWall) return;
             StartCoroutine(WalkInterval(walkInterval));
             OnPlayerMoveSubscription.Instance.CheckPlayerMove();
         }
         else if (Input.GetKeyDown(KeyCode.A) || Input.GetKeyDown(KeyCode.LeftArrow))
         {
             targetPos = coordinate.LeftTile.transform.position;
+            if (coordinate.LeftTile.isWall) return;
             StartCoroutine(WalkInterval(walkInterval));
             OnPlayerMoveSubscription.Instance.CheckPlayerMove();
         }
         else if (Input.GetKeyDown(KeyCode.D) || Input.GetKeyDown(KeyCode.RightArrow))
         {
             targetPos = coordinate.RightTile.transform.position;
+            if (coordinate.RightTile.isWall) return;
             StartCoroutine(WalkInterval(walkInterval));
             OnPlayerMoveSubscription.Instance.CheckPlayerMove();
         }

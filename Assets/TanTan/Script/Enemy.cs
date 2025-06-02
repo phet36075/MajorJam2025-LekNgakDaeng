@@ -1,5 +1,7 @@
+using System.Linq;
 using UnityEngine;
 using UnityEngine.AI;
+using System.Collections.Generic;
 
 public class Enemy : MonoBehaviour
 {
@@ -9,6 +11,12 @@ public class Enemy : MonoBehaviour
     [Header("Coordinate")]
     [SerializeField] CoordScript coordinate;
     [SerializeField] Vector2 targetPos = Vector2.zero;
+
+    [Header("Move Parameter")]
+    [SerializeField] bool canUp = true;
+    [SerializeField] bool canDown = true;
+    [SerializeField] bool canLeft = true;
+    [SerializeField] bool canRight = true;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -54,61 +62,45 @@ public class Enemy : MonoBehaviour
 
     void MoveTowardPlayer()
     {
-        float upperTileDistanceFromPlayer = Vector2.Distance(coordinate.UpperTile.transform.position, player.transform.position);
-        float lowerTileDistanceFromPlayer = Vector2.Distance(coordinate.LowerTile.transform.position, player.transform.position);
-        float leftTileDistanceFromPlayer = Vector2.Distance(coordinate.LeftTile.transform.position, player.transform.position);
-        float rightTileDistanceFromPlayer = Vector2.Distance(coordinate.RightTile.transform.position, player.transform.position);
+        var options = new List<(float distance, bool canMove, Vector2 position)>
+        {
+            (Vector2.Distance(coordinate.UpperTile.transform.position, player.transform.position), !coordinate.UpperTile.isWall, coordinate.UpperTile.transform.position),
+            (Vector2.Distance(coordinate.LowerTile.transform.position, player.transform.position), !coordinate.LowerTile.isWall, coordinate.LowerTile.transform.position),
+            (Vector2.Distance(coordinate.LeftTile.transform.position, player.transform.position), !coordinate.LeftTile.isWall, coordinate.LeftTile.transform.position),
+            (Vector2.Distance(coordinate.RightTile.transform.position, player.transform.position), !coordinate.RightTile.isWall, coordinate.RightTile.transform.position)
+        };
 
-        float minDistance = Mathf.Min(upperTileDistanceFromPlayer, lowerTileDistanceFromPlayer, leftTileDistanceFromPlayer, rightTileDistanceFromPlayer);
-        if (minDistance == upperTileDistanceFromPlayer)
+        options.Sort((a, b) => a.distance.CompareTo(b.distance));
+
+        foreach (var (distance, canMove, position) in options)
         {
-            if(!coordinate.UpperTile.isWall)
-                targetPos = coordinate.UpperTile.transform.position;
-        }
-        else if (minDistance == lowerTileDistanceFromPlayer)
-        {
-            if (!coordinate.LowerTile.isWall)
-                targetPos = coordinate.LowerTile.transform.position;
-        }
-        else if (minDistance == leftTileDistanceFromPlayer)
-        {
-            if (!coordinate.LeftTile.isWall)
-                targetPos = coordinate.LeftTile.transform.position;
-        }
-        else if (minDistance == rightTileDistanceFromPlayer)
-        {
-            if (!coordinate.RightTile.isWall)
-                targetPos = coordinate.RightTile.transform.position;
+            if (canMove)
+            {
+                targetPos = position;
+                return;
+            }
         }
     }
 
     void MoveAwayFromPlayer()
     {
-        float upperTileDistanceFromPlayer = Vector2.Distance(coordinate.UpperTile.transform.position, player.transform.position);
-        float lowerTileDistanceFromPlayer = Vector2.Distance(coordinate.LowerTile.transform.position, player.transform.position);
-        float leftTileDistanceFromPlayer = Vector2.Distance(coordinate.LeftTile.transform.position, player.transform.position);
-        float rightTileDistanceFromPlayer = Vector2.Distance(coordinate.RightTile.transform.position, player.transform.position);
+        var options = new List<(float distance, bool canMove, Vector2 position)>
+        {
+            (Vector2.Distance(coordinate.UpperTile.transform.position, player.transform.position), !coordinate.UpperTile.isWall, coordinate.UpperTile.transform.position),
+            (Vector2.Distance(coordinate.LowerTile.transform.position, player.transform.position), !coordinate.LowerTile.isWall, coordinate.LowerTile.transform.position),
+            (Vector2.Distance(coordinate.LeftTile.transform.position, player.transform.position), !coordinate.LeftTile.isWall, coordinate.LeftTile.transform.position),
+            (Vector2.Distance(coordinate.RightTile.transform.position, player.transform.position), !coordinate.RightTile.isWall, coordinate.RightTile.transform.position)
+        };
 
-        float maxDistance = Mathf.Max(upperTileDistanceFromPlayer, lowerTileDistanceFromPlayer, leftTileDistanceFromPlayer, rightTileDistanceFromPlayer);
-        if (maxDistance == upperTileDistanceFromPlayer)
+        options.Sort((b, a) => a.distance.CompareTo(b.distance));
+
+        foreach (var (distance, canMove, position) in options)
         {
-            if (!coordinate.UpperTile.isWall)
-                targetPos = coordinate.UpperTile.transform.position;
-        }
-        else if (maxDistance == lowerTileDistanceFromPlayer)
-        {
-            if (!coordinate.LowerTile.isWall)
-                targetPos = coordinate.LowerTile.transform.position;
-        }
-        else if (maxDistance == leftTileDistanceFromPlayer)
-        {
-            if (!coordinate.LeftTile.isWall)
-                targetPos = coordinate.LeftTile.transform.position;
-        }
-        else if (maxDistance == rightTileDistanceFromPlayer)
-        {
-            if (!coordinate.RightTile.isWall)
-                targetPos = coordinate.RightTile.transform.position;
+            if (canMove)
+            {
+                targetPos = position;
+                return;
+            }
         }
     }
 

@@ -138,6 +138,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: addf99e357f88fe41b23fe7da4d615df, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  wall: {fileID: 0}
   playerMask:
     serializedVersion: 2
     m_Bits: 8
@@ -147,12 +148,16 @@ MonoBehaviour:
   enemyMask:
     serializedVersion: 2
     m_Bits: 128
+  wallMask:
+    serializedVersion: 2
+    m_Bits: 256
   x: 0
   y: 0
-  UpperTile: {x: 0, y: 0}
-  LowerTile: {x: 0, y: 0}
-  LeftTile: {x: 0, y: 0}
-  RightTile: {x: 0, y: 0}
+  isWall: 0
+  UpperTile: {fileID: 0}
+  LowerTile: {fileID: 0}
+  LeftTile: {fileID: 0}
+  RightTile: {fileID: 0}
 --- !u!58 &6204569492838355189
 CircleCollider2D:
   m_ObjectHideFlags: 0
