@@ -1,0 +1,108 @@
+using System.Linq;
+using UnityEngine;
+using UnityEngine.AI;
+using System.Collections.Generic;
+
+public class Enemy : MonoBehaviour
+{
+    NavMeshAgent agent => GetComponent<NavMeshAgent>();
+    Player player => FindAnyObjectByType<Player>();
+
+    [Header("Coordinate")]
+    [SerializeField] CoordScript coordinate;
+    [SerializeField] Vector2 targetPos = Vector2.zero;
+
+    [Header("Move Parameter")]
+    [SerializeField] bool canUp = true;
+    [SerializeField] bool canDown = true;
+    [SerializeField] bool canLeft = true;
+    [SerializeField] bool canRight = true;
+
+    // Start is called once before the first execution of Update after the MonoBehaviour is created
+    void Start()
+    {
+        agent.updateRotation = false;
+        agent.updateUpAxis = false;
+
+        float tmp = 1000000;
+
+        foreach (CoordScript c in GridManager.coord)
+        {
+            float dis = Vector2.Distance(transform.position, c.transform.position);
+
+            if (tmp > dis)
+            {
+                tmp = dis;
+                targetPos = c.transform.position;
+            }
+        }
+
+        OnPlayerMoveSubscription.Instance.OnPlayerMove += this.OnPlayerMove;
+    }
+
+    // Update is called once per frame
+    void Update()
+    {
+        agent.SetDestination(targetPos);
+    }
+
+    void OnPlayerMove()
+    {
+        Debug.Log("Player Moved");
+        EnemyMovement();
+    }
+
+    void EnemyMovement()
+    {
+        if(player.havWeapon)
+            MoveAwayFromPlayer();
+        else
+            MoveTowardPlayer();
+    }
+
+    void MoveTowardPlayer()
+    {
+        var options = new List<(float distance, bool canMove, Vector2 position)>
+        {
+            (Vector2.Distance(coordinate.UpperTile.transform.position, player.transform.position), !coordinate.UpperTile.isWall, coordinate.UpperTile.transform.position),
+            (Vector2.Distance(coordinate.LowerTile.transform.position, player.transform.position), !coordinate.LowerTile.isWall, coordinate.LowerTile.transform.position),
+            (Vector2.Distance(coordinate.LeftTile.transform.position, player.transform.position), !coordinate.LeftTile.isWall, coordinate.LeftTile.transform.position),
+            (Vector2.Distance(coordinate.RightTile.transform.position, player.transform.position), !coordinate.RightTile.isWall, coordinate.RightTile.transform.position)
+        };
+
+        options.Sort((a, b) => a.distance.CompareTo(b.distance));
+
+        foreach (var (distance, canMove, position) in options)
+        {
+            if (canMove)
+            {
+                targetPos = position;
+                return;
+            }
+        }
+    }
+
+    void MoveAwayFromPlayer()
+    {
+        var options = new List<(float distance, bool canMove, Vector2 position)>
+        {
+            (Vector2.Distance(coordinate.UpperTile.transform.position, player.transform.position), !coordinate.UpperTile.isWall, coordinate.UpperTile.transform.position),
+            (Vector2.Distance(coordinate.LowerTile.transform.position, player.transform.position), !coordinate.LowerTile.isWall, coordinate.LowerTile.transform.position),
+            (Vector2.Distance(coordinate.LeftTile.transform.position, player.transform.position), !coordinate.LeftTile.isWall, coordinate.LeftTile.transform.position),
+            (Vector2.Distance(coordinate.RightTile.transform.position, player.transform.position), !coordinate.RightTile.isWall, coordinate.RightTile.transform.position)
+        };
+
+        options.Sort((b, a) => a.distance.CompareTo(b.distance));
+
+        foreach (var (distance, canMove, position) in options)
+        {
+            if (canMove)
+            {
+                targetPos = position;
+                return;
+            }
+        }
+    }
+
+    public void SetCoord(CoordScript cs) => coordinate = cs;
+}
