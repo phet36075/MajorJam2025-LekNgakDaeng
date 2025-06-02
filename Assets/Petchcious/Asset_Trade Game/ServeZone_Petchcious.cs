@@ -20,6 +20,7 @@ namespace Petchcious.Trade_Game
                     }
                     else
                     {
+                        player.DropItem(); 
                         TradeGame_Lose();
                     }
                 }

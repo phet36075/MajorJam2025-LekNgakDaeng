@@ -1,9 +1,11 @@
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 namespace Petchcious.Trade_Game
 {
     public class TradeManager_Petchcious : MonoBehaviour
     {
+        private Dictionary<string, Sprite> spriteDict;
         public string[] itemList; 
         public string currentItem; 
 
@@ -12,6 +14,11 @@ namespace Petchcious.Trade_Game
         public string[] spriteNames;
         public void Start()
         {
+            spriteDict = new Dictionary<string, Sprite>();
+            for (int i = 0; i < spriteNames.Length; i++)
+            {
+                spriteDict[spriteNames[i]] = itemSprites[i];
+            }
             GenerateNewOrder();
         }
 
@@ -19,14 +26,16 @@ namespace Petchcious.Trade_Game
         {
             int index = Random.Range(0, itemList.Length);
             currentItem = itemList[index];
-            for (int i = 0; i < spriteNames.Length; i++)
+
+            if (spriteDict.TryGetValue(currentItem, out Sprite sprite))
             {
-                if (spriteNames[i] == currentItem)
-                {
-                    orderImage.sprite = itemSprites[i];
-                    break;
-                }
+                orderImage.sprite = sprite;
             }
+            else
+            {
+                Debug.LogWarning("Sprite not found for item: " + currentItem);
+            }
+
             Debug.Log("Trade Offer: " + currentItem);
         }
     }

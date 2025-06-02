@@ -9,9 +9,10 @@ namespace Petchcious.Spikes
         /// </summary>
        public bool onlyUpSpike = false;
         public bool disableSpikeHitbox = false;
+        public bool disableAutomaticPierce = false;
         public float interval = 2f;
         public float activeDuration = 0.5f;
-
+      
         public float spikeUpDelay = 0.3f;
         public float spikeDownDelay = 0.3f;
         private Animator animator;
@@ -23,21 +24,23 @@ namespace Petchcious.Spikes
             animator = GetComponent<Animator>();
             spikeCollider = GetComponent<Collider2D>();
 
-            if (!onlyUpSpike)
+            if (!onlyUpSpike && !disableAutomaticPierce)
             {
                 InvokeRepeating("ActivateSpike", 1f, interval);
             }
-            else
+            if(onlyUpSpike)
             {
                 isActive = true;
                 animator.Play("SpikeIdleUp");
             }
+            
+           
 
             if (disableSpikeHitbox)
                 isActive = false;
         }
 
-        void ActivateSpike()
+       public void ActivateSpike()
         {
             animator.Play("SpikeUp");
             isActive = true;
@@ -54,8 +57,9 @@ namespace Petchcious.Spikes
                 }
             }
 
-            // ค้างไว้หลังแทงขึ้น
+            
             Invoke("SpikeIdleUp", spikeUpDelay); 
+            if(!disableAutomaticPierce)
             Invoke("DeactivateSpike", activeDuration);
         }
 
@@ -64,10 +68,11 @@ namespace Petchcious.Spikes
             animator.Play("SpikeIdleUp");
         }
 
-        void DeactivateSpike()
+      public void DeactivateSpike()
         {
             animator.Play("SpikeDown");
             isActive = false;
+            if(!disableAutomaticPierce)
             Invoke("SpikeIdleDown", spikeDownDelay); 
         }
 
