@@ -8,6 +8,9 @@ public class Enemy : MonoBehaviour
     NavMeshAgent agent => GetComponent<NavMeshAgent>();
     Player player => FindAnyObjectByType<Player>();
 
+    [Header("Reference")]
+    [SerializeField] LayerMask playerMask;
+
     [Header("Coordinate")]
     [SerializeField] CoordScript coordinate;
     [SerializeField] Vector2 targetPos = Vector2.zero;
@@ -44,11 +47,11 @@ public class Enemy : MonoBehaviour
     void Update()
     {
         agent.SetDestination(targetPos);
+        PlayerCollide();
     }
 
     void OnPlayerMove()
     {
-        Debug.Log("Player Moved");
         EnemyMovement();
     }
 
@@ -102,6 +105,20 @@ public class Enemy : MonoBehaviour
                 return;
             }
         }
+    }
+
+    void PlayerCollide()
+    {
+        if(Physics2D.OverlapCircle(transform.position, .52f, playerMask))
+        {
+            Destroy(player.havWeapon?gameObject : player.gameObject);
+        }
+    }
+
+    private void OnDrawGizmos()
+    {
+        Gizmos.color = Color.red;
+        Gizmos.DrawWireSphere(transform.position, .52f);
     }
 
     public void SetCoord(CoordScript cs) => coordinate = cs;

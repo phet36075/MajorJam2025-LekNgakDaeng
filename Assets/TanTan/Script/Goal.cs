@@ -1,12 +1,15 @@
 using System.Collections.Generic;
-using System.Drawing;
 using UnityEngine;
 using UnityEngine.AI;
+using UnityEngine;
 
 public class Goal : MonoBehaviour
 {
     NavMeshAgent agent => GetComponent<NavMeshAgent>();
     Player player => FindAnyObjectByType<Player>();
+
+    [Header("Reference")]
+    [SerializeField] LayerMask playerMask;
 
     [Header("Coordinate")]
     [SerializeField] CoordScript coordinate;
@@ -38,11 +41,11 @@ public class Goal : MonoBehaviour
     void Update()
     {
         agent.SetDestination(targetPos);
+        PlayerCollide();
     }
 
     void OnPlayerMove()
     {
-        Debug.Log("Player Moved");
         MoveAwayFromPlayer();
     }
 
@@ -66,6 +69,20 @@ public class Goal : MonoBehaviour
                 return;
             }
         }
+    }
+
+    void PlayerCollide()
+    {
+        if (Physics2D.OverlapCircle(transform.position, .52f, playerMask))
+        {
+            Debug.Log("Player Reached Goal");
+        }
+    }
+
+    private void OnDrawGizmos()
+    {
+        Gizmos.color = Color.red;
+        Gizmos.DrawWireSphere(transform.position, .52f);
     }
 
     public void SetCoord(CoordScript cs) => coordinate = cs;
