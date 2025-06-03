@@ -62,6 +62,13 @@ namespace Petchcious.Spikes
         void OnPlayerMove()
         {
             StartCoroutine(Delay());
+           
+           
+        }
+
+        IEnumerator Delay()
+        {
+            yield return new WaitForSeconds(0.3f);
             if (disableAutomaticPierce)
             {
                 if (isActive)
@@ -73,12 +80,6 @@ namespace Petchcious.Spikes
                     ActivateSpike();
                 }
             }
-           
-        }
-
-        IEnumerator Delay()
-        {
-            yield return new WaitForSeconds(1f);
         }
        public void ActivateSpike()
         {
