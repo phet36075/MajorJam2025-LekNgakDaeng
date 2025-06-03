@@ -1,25 +1,33 @@
 using System;
 using System.Collections;
+using System.Runtime.CompilerServices;
 using UnityEditor.Build;
 using UnityEngine;
-
+using NavMeshPlus.Components;
 namespace Petchcious.Spikes
 {
     public class SpikesRepeater_Petchcious : MonoBehaviour
     {
+        lv12_startSetup _lv12StartSetup => FindAnyObjectByType<lv12_startSetup>();
+        private NavMeshModifier _navMeshModifier;
+        [SerializeField] NavMeshSurface[] navMesh;
         /// <summary>
         /// Player Should Be Rigidbody2D and Have Box Collider2D '^'
         /// </summary>
        public bool onlyUpSpike = false;
         public bool disableSpikeHitbox = false;
         public bool disableAutomaticPierce = false;
+        public bool displayBgAfterHit;
         public float interval = 2f;
         public float activeDuration = 0.5f;
       
         public float spikeUpDelay = 0.3f;
         public float spikeDownDelay = 0.3f;
+
+        public SpriteRenderer bgForDisplay;
         private Animator animator;
         private bool isActive = false;
+        private bool isHitPlayer= false;
         private Collider2D spikeCollider;
 
         public bool startingAsSpikeUp = false;
@@ -27,6 +35,7 @@ namespace Petchcious.Spikes
         [SerializeField] LayerMask playerMask;
         void Start()
         {
+            _navMeshModifier = GetComponent<NavMeshModifier>();
             OnPlayerMoveSubscription.Instance.OnPlayerMove += this.OnPlayerMove;
             animator = GetComponent<Animator>();
             spikeCollider = GetComponent<Collider2D>();
@@ -57,7 +66,13 @@ namespace Petchcious.Spikes
             {
                 if (Physics2D.OverlapCircle(transform.position, 0.1f, playerMask))
                 {
-                    PlayerCollapseSpike();
+                    if(isHitPlayer)return;
+                    else
+                    {
+                        PlayerCollapseSpike();
+                    }
+                    
+                  
                 }
             }
           
@@ -65,6 +80,7 @@ namespace Petchcious.Spikes
 
         void OnPlayerMove()
         {
+           
             StartCoroutine(Delay());
            
            
@@ -72,7 +88,7 @@ namespace Petchcious.Spikes
 
         IEnumerator Delay()
         {
-            yield return new WaitForSeconds(0.3f);
+            yield return new WaitForSeconds(0.0f);
             if (disableAutomaticPierce)
             {
                 if (isActive)
@@ -84,11 +100,19 @@ namespace Petchcious.Spikes
                     ActivateSpike();
                 }
             }
+           
         }
        public void ActivateSpike()
-        {
+       {
+           _navMeshModifier.area = 1;
+           navMesh = FindObjectsByType<NavMeshSurface>(FindObjectsSortMode.None);
+
+           foreach (NavMeshSurface surface in navMesh)
+           {
+               surface.BuildNavMesh();
+           }
             animator.Play("SpikeUp");
-            isActive = true;
+           
 
             if (!disableSpikeHitbox)
             {
@@ -104,11 +128,19 @@ namespace Petchcious.Spikes
 
         void SpikeIdleUp()
         {
+            isActive = true;
             animator.Play("SpikeIdleUp");
         }
 
       public void DeactivateSpike()
         {
+            _navMeshModifier.area = 0;
+            navMesh = FindObjectsByType<NavMeshSurface>(FindObjectsSortMode.None);
+
+            foreach (NavMeshSurface surface in navMesh)
+            {
+                surface.BuildNavMesh();
+            }
             animator.Play("SpikeDown");
             isActive = false;
             if(!disableAutomaticPierce)
@@ -120,17 +152,28 @@ namespace Petchcious.Spikes
             animator.Play("SpikeIdleDown");
         }
 
-        private void OnTriggerEnter2D(Collider2D collision)
-        {
-            if (isActive && collision.CompareTag("Player") && !disableSpikeHitbox)
-            {
-                PlayerCollapseSpike();
-            }
-        }
+        // private void OnTriggerEnter2D(Collider2D collision)
+        // {
+        //     if (isActive && collision.CompareTag("Player") && !disableSpikeHitbox)
+        //     {
+        //         PlayerCollapseSpike();
+        //     }
+        // }
 
         public void PlayerCollapseSpike()
         {
+            isHitPlayer = true;
+            if (displayBgAfterHit)
+            {
+                if (bgForDisplay != null)
+                {
+                    if(_lv12StartSetup!=null)
+                    _lv12StartSetup.SetSortingOrder(-6);
+                }
+            }
+           
             Debug.Log("Player step on a spike!");
+            //Game Over
         }
     }
 }
