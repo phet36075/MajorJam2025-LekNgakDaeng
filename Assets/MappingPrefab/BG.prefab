@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 6836937560177735788}
   - component: {fileID: 1234345280064702526}
   m_Layer: 0
-  m_Name: jungle_bg
+  m_Name: BG
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
