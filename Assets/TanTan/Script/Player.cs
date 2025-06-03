@@ -52,6 +52,8 @@ public class Player : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.W) || Input.GetKeyDown(KeyCode.UpArrow))
         {
             if (coordinate.UpperTile.isWall) return;
+            if (coordinate.UpperTile.isBox)
+                coordinate.UpperTile.boxBehaviour.MovingBox(coordinate.UpperTile.UpperTile);
             targetPos = coordinate.UpperTile.transform.position;
             StartCoroutine(WalkInterval(walkInterval));
             OnPlayerMoveSubscription.Instance.CheckPlayerMove();
@@ -78,7 +80,6 @@ public class Player : MonoBehaviour
             OnPlayerMoveSubscription.Instance.CheckPlayerMove();
         }
     }
-
     public void SetCoord(CoordScript cs) => coordinate = cs;
 
     IEnumerator WalkInterval(float time)

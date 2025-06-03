@@ -5,6 +5,7 @@ public class CoordScript : MonoBehaviour
     Player player => FindAnyObjectByType<Player>();
     Goal goal => FindAnyObjectByType<Goal>();
     Enemy enemy => FindAnyObjectByType<Enemy>();
+    BoxBehaviour box => FindAnyObjectByType<BoxBehaviour>();
     public Wall wall;
 
     [Header("Reference")]
@@ -12,6 +13,7 @@ public class CoordScript : MonoBehaviour
     [SerializeField] LayerMask goalMask;
     [SerializeField] LayerMask enemyMask;
     [SerializeField] LayerMask wallMask;
+    [SerializeField] LayerMask boxMask;
 
     [Header("Coordinate")]
     [SerializeField] int x;
@@ -19,6 +21,8 @@ public class CoordScript : MonoBehaviour
 
     [Header("Condition")]
     public bool isWall = false;
+    public bool isBox = false;
+    public BoxBehaviour boxBehaviour;
 
     #region AdjacentTile
     public CoordScript UpperTile = null;
@@ -36,6 +40,7 @@ public class CoordScript : MonoBehaviour
         GoalCollide();
         EnemyCollide();
         WallCollide();
+        BoxCollide();
         UpperTile = GetUpperTile();
         LowerTile = GetLowerTile();
         LeftTile = GetLeftTile();
@@ -72,6 +77,18 @@ public class CoordScript : MonoBehaviour
         {
             isWall = true;
         }
+    }
+    void BoxCollide()
+    {
+        Collider2D hit = Physics2D.OverlapCircle(transform.position, 0.1f, boxMask);
+        if (hit != null)
+        {
+            isBox = true;
+            boxBehaviour = hit.GetComponent<BoxBehaviour>();
+            box.SetCoord(this);
+        }
+        else
+            isBox = false;
     }
 
     public void SetCoord(int x, int y)

@@ -151,9 +151,13 @@ MonoBehaviour:
   wallMask:
     serializedVersion: 2
     m_Bits: 256
+  boxMask:
+    serializedVersion: 2
+    m_Bits: 131072
   x: 0
   y: 0
   isWall: 0
+  isBox: 0
   UpperTile: {fileID: 0}
   LowerTile: {fileID: 0}
   LeftTile: {fileID: 0}
