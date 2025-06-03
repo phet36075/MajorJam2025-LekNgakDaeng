@@ -28,7 +28,7 @@ public class ColorMixManager : MonoBehaviour
     [SerializeField] private ColorWallBehavior[] colorWalls;
 
     [Header("Components")]
-    [SerializeField] private NavMeshSurface navMeshSurface;
+    [SerializeField] private NavMeshSurface[] navMeshSurface;
 
     void Start()
     {
@@ -39,7 +39,7 @@ public class ColorMixManager : MonoBehaviour
         Color_2 = ColorType.Default;
 
         colorWalls = FindObjectsByType<ColorWallBehavior>(FindObjectsSortMode.None);
-        navMeshSurface = FindAnyObjectByType<NavMeshSurface>();
+        navMeshSurface = FindObjectsByType<NavMeshSurface>(FindObjectsSortMode.None);
     }
 
 
@@ -62,7 +62,7 @@ public class ColorMixManager : MonoBehaviour
         {
             Color_2 = color;
             Player_SpR.color = ColorMix();
-            ColorWallCollisionUpdate();
+            
             ColorMixCount +=1;
         }
         else if(ColorMixCount > 1)
@@ -72,6 +72,8 @@ public class ColorMixManager : MonoBehaviour
             Color_1 = ColorType.Default;
             Color_2 = ColorType.Default;
         }
+
+        ColorWallCollisionUpdate();
 
         Debug.Log(ColorMixCount);
     }
@@ -166,6 +168,9 @@ public class ColorMixManager : MonoBehaviour
             colorWall.WallConditionCheck();
         }
         
-        navMeshSurface.BuildNavMesh();
+        foreach(NavMeshSurface NavSurface in navMeshSurface)
+        {
+            NavSurface.BuildNavMesh();
+        }
     }
 }
