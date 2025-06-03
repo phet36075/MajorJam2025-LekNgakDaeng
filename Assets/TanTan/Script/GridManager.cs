@@ -9,7 +9,7 @@ using NavMeshPlus.Components;
 public class GridManager : MonoBehaviour
 {
     public static List<CoordScript> coord = new List<CoordScript>();
-    NavMeshSurface navMesh => FindAnyObjectByType<NavMeshSurface>();
+    [SerializeField] NavMeshSurface[] navMesh;
 
     [Header("Grid Size")]
     [SerializeField] int gridRow;
@@ -39,7 +39,12 @@ public class GridManager : MonoBehaviour
 
     private void Start()
     {
-        navMesh.BuildNavMesh();
+        navMesh = FindObjectsByType<NavMeshSurface>(FindObjectsSortMode.None);
+
+        foreach (NavMeshSurface surface in navMesh)
+        {
+            surface.BuildNavMesh();
+        }
     }
 
     void DrawGrid()

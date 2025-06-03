@@ -24,10 +24,4 @@ public class Wall : MonoBehaviour
         transform.position = targetPos;
         cs.wall = this;
     }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
 }
