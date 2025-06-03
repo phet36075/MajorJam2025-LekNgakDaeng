@@ -6,12 +6,10 @@
   <component name="ChangeListManager">
     <list default="true" id="99024878-2e8f-4a97-a55f-bc0480fe3b04" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.MajorJam2025-LekNgakDaeng/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.MajorJam2025-LekNgakDaeng/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Petchcious/Asset_Spikes/Scenes/Spikes.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Petchcious/Asset_Spikes/Scenes/Spikes.unity" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Petchcious/Asset_Spikes/Scripts/SpikesRepeater_Petchcious.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Petchcious/Asset_Spikes/Scripts/SpikesRepeater_Petchcious.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Petchcious/Asset_Trade Game/PlayerHeldItem_Petchcious.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Petchcious/Asset_Trade Game/PlayerHeldItem_Petchcious.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Petchcious/Asset_Trade Game/Scenes/TradeGame.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Petchcious/Asset_Trade Game/Scenes/TradeGame.unity" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Petchcious/Asset_Trade Game/ServeZone_Petchcious.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Petchcious/Asset_Trade Game/ServeZone_Petchcious.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Petchcious/Asset_Trade Game/TradeManager_Petchcious.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Petchcious/Asset_Trade Game/TradeManager_Petchcious.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/TanTan/TantanTestField/NavMesh--NavMesh 1.asset" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/TanTan/TantanTestField/NavMesh--NavMesh 1.asset.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/ProjectSettings/TagManager.asset" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/TagManager.asset" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -36,7 +34,7 @@
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
     "RunOnceActivity.ShowReadmeOnStart": "true",
-    "git-widget-placeholder": "Petchcious",
+    "git-widget-placeholder": "main",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
@@ -100,6 +98,7 @@
       <updated>1748759177709</updated>
       <workItem from="1748759181055" duration="12966000" />
       <workItem from="1748851331950" duration="4748000" />
+      <workItem from="1748934662800" duration="3224000" />
     </task>
     <servers />
   </component>
