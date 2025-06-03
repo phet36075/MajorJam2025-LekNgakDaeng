@@ -7,6 +7,11 @@ public class SnapToGridCell : MonoBehaviour
 
     void Start()
     {
+        GridSnap();
+    }
+
+    public void GridSnap()
+    {
         float tmp = 1000000;
         CoordScript cs = null;
 
