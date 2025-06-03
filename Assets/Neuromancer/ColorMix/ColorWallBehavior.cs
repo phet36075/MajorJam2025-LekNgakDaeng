@@ -1,19 +1,24 @@
 using UnityEngine;
+using UnityEngine.UI;
+using NavMeshPlus.Components;
 
+[RequireComponent(typeof(NavMeshModifier))]
 public class ColorWallBehavior : MonoBehaviour
 {
     private SpriteRenderer SpR;
     private ColorMixManager CMix;
-    private Collider2D Collider;
+    private NavMeshModifier NavMeshMod;
 
     [Header("Parameters")]
     [SerializeField]private bool IsRandomized;
     [SerializeField]private ColorType WallColor;
+
     void Start()
     {
         SpR = GetComponent<SpriteRenderer>();
         CMix = FindAnyObjectByType<ColorMixManager>();
-        Collider = GetComponent<Collider2D>();
+        NavMeshMod = GetComponent<NavMeshModifier>();
+       
 
         if (IsRandomized)
         {
@@ -27,13 +32,22 @@ public class ColorWallBehavior : MonoBehaviour
     }
     private void Update()
     {
+      //WallConditionCheck();
+    }
+
+    public void WallConditionCheck()
+    {
         if (SpR.color == CMix.PlayerColorRef())
         {
-            Collider.enabled = false;
+            //gameObject.GetComponent<BoxCollider2D>().enabled = false;
+            gameObject.layer = 0;
+            NavMeshMod.area = 0;
         }
         else
         {
-            Collider.enabled = true;
+            //gameObject.GetComponent<BoxCollider2D>().enabled = true;
+            NavMeshMod.area = 1;
+            gameObject.layer = 8;
         }
     }
 

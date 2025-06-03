@@ -1,5 +1,7 @@
 using UnityEngine;
-
+using System.Collections.Generic;
+using Unity.VisualScripting;
+using NavMeshPlus.Components;
 
 public enum ColorType
 {
@@ -12,6 +14,7 @@ public class ColorMixManager : MonoBehaviour
     private int ColorMixCount = 0;
     private ColorType Color_1, Color_2;
 
+
     [Header("Parameters")]
     [SerializeField] private Color defaultColor = Color.gray;
     public Color Red;
@@ -20,6 +23,13 @@ public class ColorMixManager : MonoBehaviour
     public Color Orange;
     public Color Green;
     public Color Purple;
+
+    [Header("Color Walls")]
+    [SerializeField] private ColorWallBehavior[] colorWalls;
+
+    [Header("Components")]
+    [SerializeField] private NavMeshSurface navMeshSurface;
+
     void Start()
     {
         //Reference from Player Object Sprite Renderer
@@ -27,6 +37,9 @@ public class ColorMixManager : MonoBehaviour
         Player_SpR.color = defaultColor;
         Color_1 = ColorType.Default;
         Color_2 = ColorType.Default;
+
+        colorWalls = FindObjectsByType<ColorWallBehavior>(FindObjectsSortMode.None);
+        navMeshSurface = FindAnyObjectByType<NavMeshSurface>();
     }
 
 
@@ -49,7 +62,8 @@ public class ColorMixManager : MonoBehaviour
         {
             Color_2 = color;
             Player_SpR.color = ColorMix();
-            ColorMixCount+=1;
+            ColorWallCollisionUpdate();
+            ColorMixCount +=1;
         }
         else if(ColorMixCount > 1)
         {
@@ -88,6 +102,8 @@ public class ColorMixManager : MonoBehaviour
             {
                 outputColor = Green;
             }
+
+            
         }
 
         return outputColor;
@@ -141,5 +157,15 @@ public class ColorMixManager : MonoBehaviour
         }
 
         return OutputColor;
+    }
+
+    public void ColorWallCollisionUpdate()
+    {
+        foreach(ColorWallBehavior colorWall in colorWalls)
+        {
+            colorWall.WallConditionCheck();
+        }
+        
+        navMeshSurface.BuildNavMesh();
     }
 }
