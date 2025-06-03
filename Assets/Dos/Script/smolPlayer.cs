@@ -27,7 +27,7 @@ public class smolPlayer : MonoBehaviour
         if (collision.CompareTag("Wall"))
         {
             isDead = true;
-            moveDir = Vector2.zero;
+            rb.linearVelocity = Vector2.zero;
             Debug.Log("Dead");
         }
     }
