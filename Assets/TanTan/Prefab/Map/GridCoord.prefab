@@ -141,16 +141,16 @@ MonoBehaviour:
   wall: {fileID: 0}
   playerMask:
     serializedVersion: 2
-    m_Bits: 8
+    m_Bits: 0
   goalMask:
     serializedVersion: 2
-    m_Bits: 64
+    m_Bits: 0
   enemyMask:
     serializedVersion: 2
-    m_Bits: 128
+    m_Bits: 0
   wallMask:
     serializedVersion: 2
-    m_Bits: 256
+    m_Bits: 0
   x: 0
   y: 0
   isWall: 0
