@@ -125,4 +125,21 @@ public class ColorMixManager : MonoBehaviour
 
         return OutputColor;
     }
+
+    public Color ColorWallManual(ColorType color)
+    {
+        Color OutputColor = defaultColor;
+        switch (color)
+        {
+            case ColorType.Red: OutputColor = Red; break;
+            case ColorType.Yellow: OutputColor = Yellow; break;
+            case ColorType.Blue: OutputColor = Blue; break;
+            case ColorType.Orange: OutputColor = Orange; break;
+            case ColorType.Green: OutputColor = Green; break;
+            case ColorType.Purple: OutputColor = Purple; break;
+            default: OutputColor = Orange; break;
+        }
+
+        return OutputColor;
+    }
 }

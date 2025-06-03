@@ -497,11 +497,19 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: -5646680830568751502, guid: c551715073d9f6749a15addf2d6b63c1, type: 3}
+      propertyPath: goalMask.m_Bits
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -5646680830568751502, guid: c551715073d9f6749a15addf2d6b63c1, type: 3}
       propertyPath: wallMask.m_Bits
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: -5646680830568751502, guid: c551715073d9f6749a15addf2d6b63c1, type: 3}
       propertyPath: enemyMask.m_Bits
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -5646680830568751502, guid: c551715073d9f6749a15addf2d6b63c1, type: 3}
+      propertyPath: playerMask.m_Bits
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 380749281890861474, guid: c551715073d9f6749a15addf2d6b63c1, type: 3}
