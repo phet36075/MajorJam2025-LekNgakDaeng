@@ -1,3 +1,6 @@
+using System;
+using System.Collections;
+using UnityEditor.Build;
 using UnityEngine;
 
 namespace Petchcious.Spikes
@@ -19,8 +22,12 @@ namespace Petchcious.Spikes
         private bool isActive = false;
         private Collider2D spikeCollider;
 
+        public bool startingAsSpikeUp = false;
+        [Header("Reference")]
+        [SerializeField] LayerMask playerMask;
         void Start()
         {
+            OnPlayerMoveSubscription.Instance.OnPlayerMove += this.OnPlayerMove;
             animator = GetComponent<Animator>();
             spikeCollider = GetComponent<Collider2D>();
 
@@ -33,13 +40,46 @@ namespace Petchcious.Spikes
                 isActive = true;
                 animator.Play("SpikeIdleUp");
             }
-            
-           
+
+            if (startingAsSpikeUp)
+            {
+                ActivateSpike();
+                
+            }
 
             if (disableSpikeHitbox)
                 isActive = false;
         }
 
+        private void Update()
+        {
+            if (Physics2D.OverlapCircle(transform.position, 0.1f, playerMask))
+            {
+                PlayerCollapseSpike();
+            }
+        }
+
+        void OnPlayerMove()
+        {
+            StartCoroutine(Delay());
+            if (disableAutomaticPierce)
+            {
+                if (isActive)
+                {
+                    DeactivateSpike();
+                }
+                else
+                {
+                    ActivateSpike();
+                }
+            }
+           
+        }
+
+        IEnumerator Delay()
+        {
+            yield return new WaitForSeconds(1f);
+        }
        public void ActivateSpike()
         {
             animator.Play("SpikeUp");
@@ -47,14 +87,8 @@ namespace Petchcious.Spikes
 
             if (!disableSpikeHitbox)
             {
-                Collider2D[] hits = Physics2D.OverlapBoxAll(spikeCollider.bounds.center, spikeCollider.bounds.size, 0f);
-                foreach (Collider2D hit in hits)
-                {
-                    if (hit.CompareTag("Player"))
-                    {
-                        PlayerCollapseSpike();
-                    }
-                }
+                
+                     
             }
 
             
