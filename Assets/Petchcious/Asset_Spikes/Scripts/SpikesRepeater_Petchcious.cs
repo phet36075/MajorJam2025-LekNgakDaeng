@@ -53,10 +53,14 @@ namespace Petchcious.Spikes
 
         private void Update()
         {
-            if (Physics2D.OverlapCircle(transform.position, 0.1f, playerMask))
+            if (isActive)
             {
-                PlayerCollapseSpike();
+                if (Physics2D.OverlapCircle(transform.position, 0.1f, playerMask))
+                {
+                    PlayerCollapseSpike();
+                }
             }
+          
         }
 
         void OnPlayerMove()
