@@ -5,16 +5,17 @@ TagManager:
   serializedVersion: 3
   tags:
   - TradeItem
+  - Coord
   layers:
   - Default
   - TransparentFX
   - Ignore Raycast
-  - 
+  - Player
   - Water
   - UI
-  - 
-  - 
-  - 
+  - Goal
+  - Enemy
+  - Wall
   - 
   - 
   - 

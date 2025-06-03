@@ -496,6 +496,14 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: -5646680830568751502, guid: c551715073d9f6749a15addf2d6b63c1, type: 3}
+      propertyPath: wallMask.m_Bits
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -5646680830568751502, guid: c551715073d9f6749a15addf2d6b63c1, type: 3}
+      propertyPath: enemyMask.m_Bits
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 380749281890861474, guid: c551715073d9f6749a15addf2d6b63c1, type: 3}
       propertyPath: m_LocalPosition.x
       value: 1.5677661
@@ -764,6 +772,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1796032735649254694, guid: 3dd3911022bb51d489335da396b25261, type: 3}
+      propertyPath: playerMask.m_Bits
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 1983793067221787829, guid: 3dd3911022bb51d489335da396b25261, type: 3}
       propertyPath: m_Name
       value: Weapon
