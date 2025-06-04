@@ -35,17 +35,13 @@ public class GridManager : MonoBehaviour
     private void Awake()
     {
         coord = new List<CoordScript>();
-        DrawGrid();
-    }
-
-    private void Start()
-    {
         navMesh = FindObjectsByType<NavMeshSurface>(FindObjectsSortMode.None);
 
         foreach (NavMeshSurface surface in navMesh)
         {
             surface.BuildNavMesh();
         }
+        DrawGrid();
     }
 
     void DrawGrid()
