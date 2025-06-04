@@ -10,11 +10,11 @@ public class PlateManager : MonoBehaviour
     public GameObject objToSpawn;
     public Transform spawnPos;
 
-    [Header("Level 15")]
+    [Header("Level 14")]
     public GameObject objToRemove;
     [SerializeField] private Level curLevel;
 
-    private NavMeshSurface surface => FindAnyObjectByType<NavMeshSurface>();
+    private NavMeshSurface[] surface => FindObjectsByType<NavMeshSurface>(FindObjectsSortMode.None);
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -32,23 +32,26 @@ public class PlateManager : MonoBehaviour
                 checkCount++;
             if (checkCount == amountOfPlate && !isSpawn)
             {
-                Level5();
-                Level14();
+                AddObj();
+                RemoveObj();
                 isSpawn = true;
             }
         }
     }
 
-    private void Level14()
+    private void RemoveObj()
     {
-        if (curLevel == Level.Level14)
+        if (curLevel == Level.RemoveObj)
             Destroy(objToRemove);
-        surface.BuildNavMesh();
+        foreach (NavMeshSurface checker in surface)
+        {
+            checker.BuildNavMesh();
+        }
     }
 
-    private void Level5()
+    private void AddObj()
     {
-        if (curLevel == Level.Level5)
+        if (curLevel == Level.AddObj)
         {
             Instantiate(objToSpawn, spawnPos.position, Quaternion.identity);
         }
@@ -56,7 +59,7 @@ public class PlateManager : MonoBehaviour
 
     enum Level
     {
-        Level5,
-        Level14
+        AddObj,
+        RemoveObj
     }
 }
