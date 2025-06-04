@@ -43,10 +43,7 @@ public class PlateManager : MonoBehaviour
     {
         if (curLevel == Level.RemoveObj)
             Destroy(objToRemove);
-        foreach (NavMeshSurface checker in surface)
-        {
-            checker.BuildNavMesh();
-        }
+        BakeMap();
     }
 
     private void AddObj()
@@ -55,8 +52,16 @@ public class PlateManager : MonoBehaviour
         {
             Instantiate(objToSpawn, spawnPos.position, Quaternion.identity);
         }
-    }
+        BakeMap();
 
+    }
+    private void BakeMap()
+    {
+        foreach (NavMeshSurface checker in surface)
+        {
+            checker.BuildNavMesh();
+        }
+    }
     enum Level
     {
         AddObj,
