@@ -15,6 +15,7 @@ public class ToiletDoor : MonoBehaviour
     [SerializeField] private GameObject GoalSprite;
 
     private bool IsActivated;
+    private bool IsInTrigger;
     void Start()
     {
         switch (doorOccupant)
@@ -24,18 +25,34 @@ public class ToiletDoor : MonoBehaviour
         }
     }
 
-    private void OnTriggerStay2D(Collider2D collision)
+    private void Update()
     {
-        if(collision.gameObject.tag == "Player")
+        if (IsInTrigger)
         {
-            if(Input.GetKeyDown(KeyCode.W) || Input.GetKeyDown(KeyCode.UpArrow))
+            if (Input.GetKeyDown(KeyCode.W) || Input.GetKeyDown(KeyCode.UpArrow))
             {
                 if (!IsActivated)
                 {
                     OnOpened();
                 }
-               
+
             }
+        }
+    }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if(collision.gameObject.tag == "Player")
+        {
+          IsInTrigger = true;
+        }
+    }
+
+    private void OnTriggerExit2D(Collider2D collision)
+    {
+        if (collision.gameObject.tag == "Player")
+        {
+            IsInTrigger = false;
         }
     }
 
