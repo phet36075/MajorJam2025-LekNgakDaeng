@@ -82,15 +82,11 @@ namespace Petchcious.Spikes
 
         void OnPlayerMove()
         {
-           
             StartCoroutine(Delay());
-           
-           
         }
 
         IEnumerator Delay()
         {
-           
             if (disableAutomaticPierce)
             {
                 if (isActive)
@@ -104,7 +100,6 @@ namespace Petchcious.Spikes
                    
                 }
             }
-           
         }
        public void ActivateSpike()
        {
@@ -113,11 +108,9 @@ namespace Petchcious.Spikes
                _navMeshModifier.area = 1;
                BakeNewNav();
            }
-
-          
-            animator.Play("SpikeUp");
            
-
+            animator.Play("SpikeUp");
+            
             if (!disableSpikeHitbox)
             {
                 
@@ -126,8 +119,8 @@ namespace Petchcious.Spikes
 
             
             Invoke("SpikeIdleUp", spikeUpDelay); 
-            if(!disableAutomaticPierce)
-            Invoke("DeactivateSpike", activeDuration);
+            if(!disableAutomaticPierce) 
+                Invoke("DeactivateSpike", activeDuration);
         }
 
         void SpikeIdleUp()
@@ -147,8 +140,8 @@ namespace Petchcious.Spikes
            
             animator.Play("SpikeDown");
             isActive = false;
-            if(!disableAutomaticPierce)
-            Invoke("SpikeIdleDown", spikeDownDelay); 
+            if(!disableAutomaticPierce) 
+                Invoke("SpikeIdleDown", spikeDownDelay); 
         }
 
         void SpikeIdleDown()
@@ -169,9 +162,8 @@ namespace Petchcious.Spikes
             isHitPlayer = true;
             if (displayBgAfterHit)
             {
-                     if(_lv12StartSetup!=null)
-                     _lv12StartSetup.SetSortingOrder(-6);
-                 
+                     if(_lv12StartSetup!=null) 
+                         _lv12StartSetup.SetSortingOrder(-6);
             }
            
             Debug.Log("Player step on a spike!");
