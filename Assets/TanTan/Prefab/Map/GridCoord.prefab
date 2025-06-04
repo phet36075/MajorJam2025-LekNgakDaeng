@@ -156,7 +156,7 @@ MonoBehaviour:
     m_Bits: 256
   boxMask:
     serializedVersion: 2
-    m_Bits: 131072
+    m_Bits: 917504
   x: 0
   y: 0
   isWall: 0
