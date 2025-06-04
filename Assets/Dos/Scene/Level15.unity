@@ -3142,7 +3142,7 @@ PrefabInstance:
     - target: {fileID: 1279265859937983343, guid: ab7c9240e3beb48489b5e7d7892cddb6, type: 3}
       propertyPath: m_NavMeshData
       value: 
-      objectReference: {fileID: 23800000, guid: b1df82abb5bb3644697c0bef9d56e34e, type: 2}
+      objectReference: {fileID: 23800000, guid: 2464933ec0dd816428f9b7d70f729b37, type: 2}
     - target: {fileID: 1770974610620136979, guid: ab7c9240e3beb48489b5e7d7892cddb6, type: 3}
       propertyPath: m_Enabled
       value: 1
@@ -3154,7 +3154,7 @@ PrefabInstance:
     - target: {fileID: 2571784457774393483, guid: ab7c9240e3beb48489b5e7d7892cddb6, type: 3}
       propertyPath: m_NavMeshData
       value: 
-      objectReference: {fileID: 23800000, guid: 3b0282516396b4848af28d66ffd9a68d, type: 2}
+      objectReference: {fileID: 23800000, guid: cb758acb225e5214c90d301435e847c4, type: 2}
     - target: {fileID: 2978743400574264883, guid: ab7c9240e3beb48489b5e7d7892cddb6, type: 3}
       propertyPath: m_Enabled
       value: 1
@@ -3166,7 +3166,7 @@ PrefabInstance:
     - target: {fileID: 3321266397123096841, guid: ab7c9240e3beb48489b5e7d7892cddb6, type: 3}
       propertyPath: m_NavMeshData
       value: 
-      objectReference: {fileID: 23800000, guid: 3f47576eb2d77d8479342e43d7101aad, type: 2}
+      objectReference: {fileID: 23800000, guid: b1a5df0238867cd45b698871986a0b4c, type: 2}
     - target: {fileID: 4117896513353935815, guid: ab7c9240e3beb48489b5e7d7892cddb6, type: 3}
       propertyPath: m_LocalScale.y
       value: 13.723275
