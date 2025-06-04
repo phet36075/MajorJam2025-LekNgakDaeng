@@ -16,7 +16,7 @@ public class ColorPaletteBehavior : MonoBehaviour
        CMix = FindAnyObjectByType<ColorMixManager>();
         SpR = GetComponent<SpriteRenderer>();
 
-        SpR.color = CMix.SetPaletteColor(MainColor);
+        //SpR.color = CMix.SetPaletteColor(MainColor);
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
