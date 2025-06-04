@@ -33,6 +33,7 @@ public class ColorMixManager : MonoBehaviour
     void Start()
     {
         //Reference from Player Object Sprite Renderer
+        playerObj = GameObject.FindGameObjectWithTag("Player");
         Player_SpR = playerObj.GetComponent<SpriteRenderer>();
         Player_SpR.color = defaultColor;
         Color_1 = ColorType.Default;

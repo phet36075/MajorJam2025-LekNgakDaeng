@@ -8,9 +8,11 @@ public class ColorWallBehavior : MonoBehaviour
     private SpriteRenderer SpR;
     private ColorMixManager CMix;
     private NavMeshModifier NavMeshMod;
+    
 
     [Header("Parameters")]
-    [SerializeField]private bool IsRandomized;
+    [SerializeField]private bool IsSingleRandomized;
+    [SerializeField] private bool IsBatchRandomized;
     [SerializeField]private ColorType WallColor;
 
     void Start()
@@ -20,13 +22,16 @@ public class ColorWallBehavior : MonoBehaviour
         NavMeshMod = GetComponent<NavMeshModifier>();
        
 
-        if (IsRandomized)
+        if (IsSingleRandomized)
         {
             SpR.color = CMix.ColorWallRandomized();
         }
         else
         {
-            SpR.color = CMix.ColorWallManual(WallColor);
+            if(!IsBatchRandomized)
+            {
+                SpR.color = CMix.ColorWallManual(WallColor);
+            }
         }
         
     }
@@ -51,5 +56,11 @@ public class ColorWallBehavior : MonoBehaviour
         }
     }
 
+    public void ColorTypeOverride(ColorType OverrideColor)
+    {
+        Debug.Log("Color Wall Override");
+        //WallColor = OverrideColor;
+        SpR.color = CMix.ColorWallManual(OverrideColor);
+    }
 
 }
