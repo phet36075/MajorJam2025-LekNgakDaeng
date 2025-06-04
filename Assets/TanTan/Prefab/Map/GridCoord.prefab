@@ -142,6 +142,9 @@ MonoBehaviour:
   playerMask:
     serializedVersion: 2
     m_Bits: 8
+  spamPlayerMask:
+    serializedVersion: 2
+    m_Bits: 512
   goalMask:
     serializedVersion: 2
     m_Bits: 64
@@ -158,6 +161,7 @@ MonoBehaviour:
   y: 0
   isWall: 0
   isBox: 0
+  boxBehaviour: {fileID: 0}
   UpperTile: {fileID: 0}
   LowerTile: {fileID: 0}
   LeftTile: {fileID: 0}

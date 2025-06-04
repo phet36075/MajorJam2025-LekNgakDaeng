@@ -2,7 +2,8 @@ using UnityEngine;
 
 public class CoordScript : MonoBehaviour
 {
-    Player player => FindAnyObjectByType<Player>();
+    Player player => FindAnyObjectByType<Player>(); 
+    SpamGamePlayer spamGamePlayer => FindAnyObjectByType<SpamGamePlayer>();
     Goal goal => FindAnyObjectByType<Goal>();
     Enemy enemy => FindAnyObjectByType<Enemy>();
     BoxBehaviour box => FindAnyObjectByType<BoxBehaviour>();
@@ -10,6 +11,7 @@ public class CoordScript : MonoBehaviour
 
     [Header("Reference")]
     [SerializeField] LayerMask playerMask;
+    [SerializeField] LayerMask spamPlayerMask;
     [SerializeField] LayerMask goalMask;
     [SerializeField] LayerMask enemyMask;
     [SerializeField] LayerMask wallMask;
@@ -37,6 +39,7 @@ public class CoordScript : MonoBehaviour
     void Update()
     {
         PlayerCollide();
+        SpamPlayerCollide();
         GoalCollide();
         EnemyCollide();
         WallCollide();
@@ -57,6 +60,14 @@ public class CoordScript : MonoBehaviour
         if (Physics2D.OverlapCircle(transform.position, 0.1f, playerMask))
         {
             player.SetCoord(this);
+        }
+    }
+
+    void SpamPlayerCollide()
+    {
+        if (Physics2D.OverlapCircle(transform.position, 0.1f, spamPlayerMask))
+        {
+            spamGamePlayer.SetCoord(this);
         }
     }
 

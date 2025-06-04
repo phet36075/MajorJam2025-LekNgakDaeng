@@ -10,18 +10,16 @@ public class SpamGameManager : MonoBehaviour
     [SerializeField] private GameObject GoalPost;
 
     [Header("Parameters")]
-    [SerializeField] private KeyCode SpamKey = KeyCode.D;
-    [SerializeField] private KeyCode AltSpamKey = KeyCode.RightArrow;
-    [SerializeField] private float PlayerSpeedIncrement = 1;
-    [SerializeField] private float EnemySpeedIncrementRate = 0.5f;
-    [SerializeField] private float DefaultSpeed = 2;
-    [SerializeField] private float MaxSpeedBonusCap = 10;
-    [SerializeField][Range(0, 1)] private float EnemySpeedCapMultiplier = 0.8f;
+    public KeyCode SpamKey = KeyCode.D;
+    public KeyCode AltSpamKey = KeyCode.RightArrow;
+    public float DefaultInterval = 1f;
+    [Range(0, 1)] public float MinIntervalBonusCap = 0.1f;
+    [Range(0, 1)] public float EnemySpeedCapMultiplier = 0.8f;
 
     [Header("System")]
     private float EnemySpeedBonus;
     private float PlayerSpeedBonus;
-    private bool IsGameEnded = false;
+    public bool IsGameEnded = false;
     
     
     void Start()
@@ -32,8 +30,10 @@ public class SpamGameManager : MonoBehaviour
 
     void Update()
     {
+        
         if (!IsGameEnded)
         {
+            /*
             //Player & Enemy Movement
             Player.transform.Translate(Vector2.right * (DefaultSpeed + PlayerSpeedBonus) * Time.deltaTime);
             Enemy.transform.Translate(Vector2.right * (DefaultSpeed + EnemySpeedBonus) * Time.deltaTime);
@@ -44,13 +44,15 @@ public class SpamGameManager : MonoBehaviour
                 EnemySpeedBonus += PlayerSpeedIncrement * Time.deltaTime;
             }
 
-            PlayerSpeedUpdate();
+            PlayerSpeedUpdate();*/
             GameEndCheck();
         }
+        
     }
 
     void PlayerSpeedUpdate()
     {
+        /*
         if(PlayerSpeedBonus > 0)
         {
             PlayerSpeedBonus -= 1f * Time.deltaTime;
@@ -63,6 +65,7 @@ public class SpamGameManager : MonoBehaviour
                 PlayerSpeedBonus += PlayerSpeedIncrement;
             }
         }
+        */
     }
 
     void GameEndCheck()
