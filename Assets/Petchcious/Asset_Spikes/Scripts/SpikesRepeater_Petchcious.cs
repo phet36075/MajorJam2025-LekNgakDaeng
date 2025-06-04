@@ -104,13 +104,13 @@ namespace Petchcious.Spikes
         }
        public void ActivateSpike()
        {
-           _navMeshModifier.area = 1;
-           navMesh = FindObjectsByType<NavMeshSurface>(FindObjectsSortMode.None);
-
-           foreach (NavMeshSurface surface in navMesh)
+           if (navMesh != null && _navMeshModifier != null)
            {
-               surface.BuildNavMesh();
+               _navMeshModifier.area = 1;
+               BakeNewNav();
            }
+
+          
             animator.Play("SpikeUp");
            
 
@@ -134,13 +134,13 @@ namespace Petchcious.Spikes
 
       public void DeactivateSpike()
         {
-            _navMeshModifier.area = 0;
-            navMesh = FindObjectsByType<NavMeshSurface>(FindObjectsSortMode.None);
-
-            foreach (NavMeshSurface surface in navMesh)
+            if (navMesh != null && _navMeshModifier != null)
             {
-                surface.BuildNavMesh();
+                _navMeshModifier.area = 0;
+                BakeNewNav();
             }
+           
+           
             animator.Play("SpikeDown");
             isActive = false;
             if(!disableAutomaticPierce)
@@ -174,6 +174,16 @@ namespace Petchcious.Spikes
            
             Debug.Log("Player step on a spike!");
             //Game Over
+        }
+
+        public void BakeNewNav()
+        {
+            navMesh = FindObjectsByType<NavMeshSurface>(FindObjectsSortMode.None);
+
+            foreach (NavMeshSurface surface in navMesh)
+            {
+                surface.BuildNavMesh();
+            }
         }
     }
 }
