@@ -6,6 +6,8 @@ enum DoorOccupants
 }
 public class ToiletDoor : MonoBehaviour
 {
+    WinLoseManager GameSystem => FindAnyObjectByType<WinLoseManager>();
+
     [Header("Parameters")]
     [SerializeField] private DoorOccupants doorOccupant;
 
@@ -62,8 +64,8 @@ public class ToiletDoor : MonoBehaviour
         DoorObject.SetActive(false);
         switch (doorOccupant)
         {
-            case DoorOccupants.Enemy: Debug.Log("You Found Enemy!");  break; //Lose Function Here
-            case DoorOccupants.Goal: Debug.Log("You Found Banana!"); break;  //Win Function Here
+            case DoorOccupants.Enemy: GameSystem.OnLose(); break; //Lose Function Here
+            case DoorOccupants.Goal: GameSystem.OnWin();   break;  //Win Function Here
         }
     }
 }
