@@ -8,7 +8,7 @@ using NavMeshPlus.Components;
 
 public class GridManager : MonoBehaviour
 {
-    public static List<CoordScript> coord;
+    public List<CoordScript> coord;
     [SerializeField] NavMeshSurface[] navMesh;
 
     [Header("Grid Size")]

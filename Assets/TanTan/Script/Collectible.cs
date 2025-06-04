@@ -3,6 +3,7 @@ using UnityEngine.AI;
 
 public class Collectible : MonoBehaviour
 {
+    GridManager gm => FindAnyObjectByType<GridManager>();
     Player player => FindAnyObjectByType<Player>();
 
     [Header("Reference")]
@@ -15,7 +16,7 @@ public class Collectible : MonoBehaviour
     {
         float tmp = 1000000;
 
-        foreach (CoordScript c in GridManager.coord)
+        foreach (CoordScript c in gm.coord)
         {
             float dis = Vector2.Distance(transform.position, c.transform.position);
 

@@ -41,6 +41,11 @@ public class CoordScript : MonoBehaviour
         EnemyCollide();
         WallCollide();
         BoxCollide();
+        UpdateAdjacent();
+    }
+
+    void UpdateAdjacent()
+    {
         UpperTile = GetUpperTile();
         LowerTile = GetLowerTile();
         LeftTile = GetLeftTile();

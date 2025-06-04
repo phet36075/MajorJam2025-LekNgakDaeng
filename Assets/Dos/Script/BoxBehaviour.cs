@@ -5,6 +5,7 @@ using NavMeshPlus.Components;
 
 public class BoxBehaviour : MonoBehaviour
 {
+    GridManager gm => FindAnyObjectByType<GridManager>();
     CoordScript coordinate;
     NavMeshAgent agent => GetComponent<NavMeshAgent>();
     NavMeshSurface[] surface => FindObjectsByType<NavMeshSurface>(FindObjectsSortMode.None);
@@ -17,7 +18,7 @@ public class BoxBehaviour : MonoBehaviour
 
         float tmp = 1000000;
 
-        foreach (CoordScript c in GridManager.coord)
+        foreach (CoordScript c in gm.coord)
         {
             float dis = Vector2.Distance(transform.position, c.transform.position);
 

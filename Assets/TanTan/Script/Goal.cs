@@ -5,6 +5,7 @@ using UnityEngine;
 
 public class Goal : MonoBehaviour
 {
+    GridManager gm => FindAnyObjectByType<GridManager>();
     NavMeshAgent agent => GetComponent<NavMeshAgent>();
     Player player => FindAnyObjectByType<Player>();
 
@@ -23,7 +24,7 @@ public class Goal : MonoBehaviour
 
         float tmp = 1000000;
 
-        foreach (CoordScript c in GridManager.coord)
+        foreach (CoordScript c in gm.coord)
         {
             float dis = Vector2.Distance(transform.position, c.transform.position);
 

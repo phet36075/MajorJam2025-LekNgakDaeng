@@ -5,6 +5,7 @@ using System.Collections.Generic;
 
 public class Enemy : MonoBehaviour
 {
+    GridManager gm => FindAnyObjectByType<GridManager>();
     NavMeshAgent agent => GetComponent<NavMeshAgent>();
     Player player => FindAnyObjectByType<Player>();
 
@@ -29,7 +30,7 @@ public class Enemy : MonoBehaviour
 
         float tmp = 1000000;
 
-        foreach (CoordScript c in GridManager.coord)
+        foreach (CoordScript c in gm.coord)
         {
             float dis = Vector2.Distance(transform.position, c.transform.position);
 
@@ -46,6 +47,7 @@ public class Enemy : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        Debug.Log(coordinate);
         agent.SetDestination(targetPos);
         PlayerCollide();
     }
@@ -65,7 +67,7 @@ public class Enemy : MonoBehaviour
 
     void MoveTowardPlayer()
     {
-        var options = new List<(float distance, bool canMove, Vector2 position)>
+        var options = new List<(float distance, bool canMove, Vector2 position)>()
         {
             (Vector2.Distance(coordinate.UpperTile.transform.position, player.transform.position), !coordinate.UpperTile.isWall, coordinate.UpperTile.transform.position),
             (Vector2.Distance(coordinate.LowerTile.transform.position, player.transform.position), !coordinate.LowerTile.isWall, coordinate.LowerTile.transform.position),
