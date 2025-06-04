@@ -7,18 +7,18 @@ public class LoadSceneAndPlayAnimation : MonoBehaviour
   public Animator animator;
   public string animName;
   public float waitingTime;
-  public float winDelay;
-  public void PlayAnimationAndLoadScene(string sceneName)
+  public float delay;
+  public void PlayAnimationAndLoadScene(int sceneIndex)
   {
-      StartCoroutine(PlayAnimAndLoadScene(sceneName));
+      StartCoroutine(PlayAnimAndLoadScene(sceneIndex));
   }
-  public void PlayWinAnimAndLoadScene(string sceneName)
+  public void PlayWinOrLoseAnimAndLoadScene(int sceneIndex)
   {
-      StartCoroutine(WinAnimAndLoadScene(sceneName));
+      StartCoroutine(WinAnimOrLoseAndLoadScene(sceneIndex));
   }
-  public IEnumerator WinAnimAndLoadScene(string sceneName)
+  public IEnumerator WinAnimOrLoseAndLoadScene(int sceneIndex)
   {
-      yield return new WaitForSeconds(winDelay);
+      yield return new WaitForSeconds(delay);
       if (animator != null)
       {
           animator.SetTrigger(animName);
@@ -26,20 +26,20 @@ public class LoadSceneAndPlayAnimation : MonoBehaviour
          
       yield return new WaitForSeconds(waitingTime);
 
-      SceneManager.LoadScene(sceneName);
+      SceneManager.LoadScene(sceneIndex);
   }
-  public IEnumerator PlayAnimAndLoadScene(string sceneName)
+  public IEnumerator PlayAnimAndLoadScene(int sceneIndex)
   {
       if(animator != null)
     animator.SetTrigger(animName);
     yield return new WaitForSeconds(waitingTime);
 
-    SceneManager.LoadScene(sceneName);
+    SceneManager.LoadScene(sceneIndex);
   }
 
-  public void LoadScene(string sceneName)
+  public void LoadScene(int sceneIndex)
   {
-      SceneManager.LoadScene(sceneName);
+      SceneManager.LoadScene(sceneIndex);
   }
 
   public void PlayAnim(string animName)

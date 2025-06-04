@@ -8,6 +8,8 @@ namespace Petchcious.Spikes
 {
     public class SpikesRepeater_Petchcious : MonoBehaviour
     {
+        private WinLoseManager winLoseManager => FindAnyObjectByType<WinLoseManager>();
+        
         lv12_startSetup _lv12StartSetup => FindAnyObjectByType<lv12_startSetup>();
         private NavMeshModifier _navMeshModifier;
         [SerializeField] NavMeshSurface[] navMesh;
@@ -88,7 +90,7 @@ namespace Petchcious.Spikes
 
         IEnumerator Delay()
         {
-            yield return new WaitForSeconds(0.0f);
+           
             if (disableAutomaticPierce)
             {
                 if (isActive)
@@ -97,7 +99,9 @@ namespace Petchcious.Spikes
                 }
                 else
                 {
+                    yield return new WaitForSeconds(0.3f);
                     ActivateSpike();
+                   
                 }
             }
            
@@ -165,7 +169,6 @@ namespace Petchcious.Spikes
             isHitPlayer = true;
             if (displayBgAfterHit)
             {
-               
                      if(_lv12StartSetup!=null)
                      _lv12StartSetup.SetSortingOrder(-6);
                  
@@ -173,6 +176,7 @@ namespace Petchcious.Spikes
            
             Debug.Log("Player step on a spike!");
             //Game Over
+            winLoseManager.OnLose();
         }
 
         public void BakeNewNav()
