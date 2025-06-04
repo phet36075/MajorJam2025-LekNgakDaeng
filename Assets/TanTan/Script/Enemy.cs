@@ -5,6 +5,7 @@ using System.Collections.Generic;
 
 public class Enemy : MonoBehaviour
 {
+    WinLoseManager wlm => FindAnyObjectByType<WinLoseManager>();
     GridManager gm => FindAnyObjectByType<GridManager>();
     NavMeshAgent agent => GetComponent<NavMeshAgent>();
     Player player => FindAnyObjectByType<Player>();
@@ -113,7 +114,15 @@ public class Enemy : MonoBehaviour
     {
         if(Physics2D.OverlapCircle(transform.position, .52f, playerMask))
         {
-            Destroy(player.havWeapon?gameObject : player.gameObject);
+            if(player.havWeapon)
+            {
+                Destroy(gameObject);
+            }
+            else
+            {
+                wlm.OnLose();
+                Destroy(player.gameObject);
+            }
         }
     }
 

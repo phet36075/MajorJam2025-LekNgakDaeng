@@ -5,6 +5,7 @@ using UnityEngine;
 
 public class Goal : MonoBehaviour
 {
+    WinLoseManager wlm => FindAnyObjectByType<WinLoseManager>();
     GridManager gm => FindAnyObjectByType<GridManager>();
     NavMeshAgent agent => GetComponent<NavMeshAgent>();
     Player player => FindAnyObjectByType<Player>();
@@ -76,7 +77,7 @@ public class Goal : MonoBehaviour
     {
         if (Physics2D.OverlapCircle(transform.position, .52f, playerMask))
         {
-            Debug.Log("Player Reached Goal");
+            wlm.OnWin();
         }
     }
 
