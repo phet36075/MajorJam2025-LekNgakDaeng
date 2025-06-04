@@ -8,7 +8,7 @@ using NavMeshPlus.Components;
 
 public class GridManager : MonoBehaviour
 {
-    public static List<CoordScript> coord = new List<CoordScript>();
+    public List<CoordScript> coord;
     [SerializeField] NavMeshSurface[] navMesh;
 
     [Header("Grid Size")]
@@ -34,6 +34,7 @@ public class GridManager : MonoBehaviour
 
     private void Awake()
     {
+        coord = new List<CoordScript>();
         DrawGrid();
     }
 

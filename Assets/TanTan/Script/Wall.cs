@@ -2,6 +2,7 @@ using UnityEngine;
 
 public class Wall : MonoBehaviour
 {
+    GridManager gm => FindAnyObjectByType<GridManager>();
     [Header("Coordinate")]
     [SerializeField] Vector2 targetPos;
 
@@ -10,7 +11,7 @@ public class Wall : MonoBehaviour
         float tmp = 1000000;
         CoordScript cs = null;
 
-        foreach (CoordScript c in GridManager.coord)
+        foreach (CoordScript c in gm.coord)
         {
             float dis = Vector2.Distance(transform.position, c.transform.position);
 
