@@ -33,9 +33,19 @@ public class BoxBehaviour : MonoBehaviour
     public void MovingBox(CoordScript coor)
     {
         if (coor.isWall) return;
+
         targetPos = coor.transform.position;
         Debug.Log($"{coor.transform.position}");
         agent.SetDestination(targetPos);
+        StartCoroutine(waitForBake());
+    }
+    IEnumerator waitForBake()
+    {
+        yield return new WaitForSeconds(0.5f);
+        foreach (NavMeshSurface navMeshSurface in surface)
+        {
+            navMeshSurface.BuildNavMesh();
+        }
     }
     private void Update()
     {
