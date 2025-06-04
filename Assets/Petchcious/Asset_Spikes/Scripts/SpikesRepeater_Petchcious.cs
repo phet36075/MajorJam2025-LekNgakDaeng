@@ -24,7 +24,7 @@ namespace Petchcious.Spikes
         public float spikeUpDelay = 0.3f;
         public float spikeDownDelay = 0.3f;
 
-        public SpriteRenderer bgForDisplay;
+      //  public SpriteRenderer bgForDisplay;
         private Animator animator;
         private bool isActive = false;
         private bool isHitPlayer= false;
@@ -165,11 +165,10 @@ namespace Petchcious.Spikes
             isHitPlayer = true;
             if (displayBgAfterHit)
             {
-                if (bgForDisplay != null)
-                {
-                    if(_lv12StartSetup!=null)
-                    _lv12StartSetup.SetSortingOrder(-6);
-                }
+               
+                     if(_lv12StartSetup!=null)
+                     _lv12StartSetup.SetSortingOrder(-6);
+                 
             }
            
             Debug.Log("Player step on a spike!");
