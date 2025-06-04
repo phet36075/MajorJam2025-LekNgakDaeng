@@ -32,6 +32,7 @@ public class BoxBehaviour : MonoBehaviour
     }
     public void MovingBox(CoordScript coor)
     {
+        if (coor.isWall) return;
         targetPos = coor.transform.position;
         Debug.Log($"{coor.transform.position}");
         agent.SetDestination(targetPos);

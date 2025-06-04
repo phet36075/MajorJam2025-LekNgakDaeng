@@ -52,7 +52,7 @@ public class Player : MonoBehaviour
         if(isCooldown) return;
         if (Input.GetKeyDown(KeyCode.W) || Input.GetKeyDown(KeyCode.UpArrow))
         {
-            if (coordinate.UpperTile.isWall) return;
+            if (coordinate.UpperTile.isWall || (coordinate.UpperTile.isBox && coordinate.UpperTile.UpperTile.isWall)) return;
             if (coordinate.UpperTile.isBox)
                 coordinate.UpperTile.boxBehaviour.MovingBox(coordinate.UpperTile.UpperTile);
             targetPos = coordinate.UpperTile.transform.position;
@@ -61,21 +61,27 @@ public class Player : MonoBehaviour
         }
         else if (Input.GetKeyDown(KeyCode.S) || Input.GetKeyDown(KeyCode.DownArrow))
         {
-            if (coordinate.LowerTile.isWall) return;
+            if (coordinate.LowerTile.isWall || (coordinate.LowerTile.isBox && coordinate.LowerTile.LowerTile.isWall)) return;
+            if (coordinate.LowerTile.isBox)
+                coordinate.LowerTile.boxBehaviour.MovingBox(coordinate.LowerTile.LowerTile);
             targetPos = coordinate.LowerTile.transform.position;
             StartCoroutine(WalkInterval(walkInterval));
             OnPlayerMoveSubscription.Instance.CheckPlayerMove();
         }
         else if (Input.GetKeyDown(KeyCode.A) || Input.GetKeyDown(KeyCode.LeftArrow))
         {
-            if (coordinate.LeftTile.isWall) return;
+            if (coordinate.LeftTile.isWall || (coordinate.LeftTile.isBox && coordinate.LeftTile.LeftTile.isWall)) return;
+            if (coordinate.LeftTile.isBox)
+                coordinate.LeftTile.boxBehaviour.MovingBox(coordinate.LeftTile.LeftTile);
             targetPos = coordinate.LeftTile.transform.position;
             StartCoroutine(WalkInterval(walkInterval));
             OnPlayerMoveSubscription.Instance.CheckPlayerMove();
         }
         else if (Input.GetKeyDown(KeyCode.D) || Input.GetKeyDown(KeyCode.RightArrow))
         {
-            if (coordinate.RightTile.isWall) return;
+            if (coordinate.RightTile.isWall || (coordinate.RightTile.isBox && coordinate.RightTile.RightTile.isWall)) return;
+            if (coordinate.RightTile.isBox)
+                coordinate.RightTile.boxBehaviour.MovingBox(coordinate.RightTile.RightTile);
             targetPos = coordinate.RightTile.transform.position;
             StartCoroutine(WalkInterval(walkInterval));
             OnPlayerMoveSubscription.Instance.CheckPlayerMove();
