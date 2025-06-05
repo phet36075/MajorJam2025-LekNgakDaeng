@@ -847,6 +847,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4356682691716019228}
   - component: {fileID: 4972293923030992827}
+  - component: {fileID: 4195609822177077305}
   m_Layer: 0
   m_Name: __UI
   m_TagString: Untagged
@@ -892,6 +893,19 @@ MonoBehaviour:
   resetKey: 114
   pausePanel: {fileID: 6318584243286189614}
   sceneIndex: 2
+--- !u!114 &4195609822177077305
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3057968928018983556}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 054a9e1f8a6d13d4d9a8c5f4e96b0ae0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  levelBGM: {fileID: 8300000, guid: 500f39300cd044c4492cb21a59d0c30f, type: 3}
 --- !u!1 &3166882077766965020
 GameObject:
   m_ObjectHideFlags: 0
