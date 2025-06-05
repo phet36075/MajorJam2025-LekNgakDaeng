@@ -20,6 +20,7 @@ public class Goal : MonoBehaviour
 
     [Header("Status")]
     [SerializeField] bool isMoving = false;
+    bool isWin = false;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -93,9 +94,10 @@ public class Goal : MonoBehaviour
 
     void PlayerCollide()
     {
-        if (Physics2D.OverlapCircle(transform.position, .52f, playerMask))
+        if (Physics2D.OverlapCircle(transform.position, .52f, playerMask) && !isWin)
         {
             wlm.OnWin();
+            isWin = true;
         }
     }
 
