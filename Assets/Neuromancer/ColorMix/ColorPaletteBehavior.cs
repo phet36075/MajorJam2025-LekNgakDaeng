@@ -7,9 +7,12 @@ public class ColorPaletteBehavior : MonoBehaviour
 {
     [Header("Attributes")]
     public ColorType MainColor;
+    [SerializeField] private AudioClip UseSfx;
 
     private ColorMixManager CMix;
     private SpriteRenderer SpR;
+
+
 
     private void Start()
     {
@@ -24,6 +27,7 @@ public class ColorPaletteBehavior : MonoBehaviour
         if(collision.tag == "Player")
         {
             CMix.OnColorMixed(MainColor);
+            SoundFXManager.instance.PlaySoundFXClip(UseSfx);
         }
     }
 }
