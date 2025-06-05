@@ -5,6 +5,7 @@ using UnityEngine;
 
 public class Goal : MonoBehaviour
 {
+    SpriteRenderer sr => GetComponent<SpriteRenderer>();
     WinLoseManager wlm => FindAnyObjectByType<WinLoseManager>();
     GridManager gm => FindAnyObjectByType<GridManager>();
     NavMeshAgent agent => GetComponent<NavMeshAgent>();
@@ -74,6 +75,17 @@ public class Goal : MonoBehaviour
             if (canMove)
             {
                 targetPos = position;
+
+                float deltaX = targetPos.x - transform.position.x;
+
+                if (Mathf.Abs(deltaX) > 0.01f)
+                {
+                    if (deltaX > 0)
+                        sr.flipX = true;
+                    else
+                        sr.flipX = false;
+                }
+
                 return;
             }
         }

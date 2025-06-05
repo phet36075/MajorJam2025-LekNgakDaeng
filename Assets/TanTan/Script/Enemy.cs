@@ -5,6 +5,7 @@ using System.Collections.Generic;
 
 public class Enemy : MonoBehaviour
 {
+    SpriteRenderer sr => GetComponent<SpriteRenderer>();
     SacrificeManager sm => FindAnyObjectByType<SacrificeManager>();
     WinLoseManager wlm => FindAnyObjectByType<WinLoseManager>();
     GridManager gm => FindAnyObjectByType<GridManager>();
@@ -84,6 +85,17 @@ public class Enemy : MonoBehaviour
             if (canMove)
             {
                 targetPos = position;
+
+                float deltaX = targetPos.x - transform.position.x;
+
+                if (Mathf.Abs(deltaX) > 0.01f)
+                {
+                    if (deltaX > 0)
+                        sr.flipX = true;
+                    else
+                        sr.flipX = false;
+                }
+
                 return;
             }
         }
@@ -92,12 +104,12 @@ public class Enemy : MonoBehaviour
     void MoveAwayFromPlayer()
     {
         var options = new List<(float distance, bool canMove, Vector2 position)>
-        {
-            (Vector2.Distance(coordinate.UpperTile.transform.position, player.transform.position), !coordinate.UpperTile.isWall, coordinate.UpperTile.transform.position),
-            (Vector2.Distance(coordinate.LowerTile.transform.position, player.transform.position), !coordinate.LowerTile.isWall, coordinate.LowerTile.transform.position),
-            (Vector2.Distance(coordinate.LeftTile.transform.position, player.transform.position), !coordinate.LeftTile.isWall, coordinate.LeftTile.transform.position),
-            (Vector2.Distance(coordinate.RightTile.transform.position, player.transform.position), !coordinate.RightTile.isWall, coordinate.RightTile.transform.position)
-        };
+    {
+        (Vector2.Distance(coordinate.UpperTile.transform.position, player.transform.position), !coordinate.UpperTile.isWall, coordinate.UpperTile.transform.position),
+        (Vector2.Distance(coordinate.LowerTile.transform.position, player.transform.position), !coordinate.LowerTile.isWall, coordinate.LowerTile.transform.position),
+        (Vector2.Distance(coordinate.LeftTile.transform.position, player.transform.position), !coordinate.LeftTile.isWall, coordinate.LeftTile.transform.position),
+        (Vector2.Distance(coordinate.RightTile.transform.position, player.transform.position), !coordinate.RightTile.isWall, coordinate.RightTile.transform.position)
+    };
 
         options.Sort((b, a) => a.distance.CompareTo(b.distance));
 
@@ -106,11 +118,21 @@ public class Enemy : MonoBehaviour
             if (canMove)
             {
                 targetPos = position;
+
+                float deltaX = targetPos.x - transform.position.x;
+
+                if (Mathf.Abs(deltaX) > 0.01f)
+                {
+                    if (deltaX > 0)
+                        sr.flipX = true;
+                    else
+                        sr.flipX = false;
+                }
+
                 return;
             }
         }
     }
-
     void PlayerCollide()
     {
         if(Physics2D.OverlapCircle(transform.position, .52f, playerMask))

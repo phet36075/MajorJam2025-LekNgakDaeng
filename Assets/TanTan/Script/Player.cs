@@ -19,6 +19,9 @@ public class Player : MonoBehaviour
     [Header("Resource")]
     public bool havWeapon = false;
 
+    [Header("Sound")]
+    [SerializeField] AudioClip walkSound;
+
     bool isCooldown = false;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
@@ -56,6 +59,7 @@ public class Player : MonoBehaviour
             if (coordinate.UpperTile.isWall || (coordinate.UpperTile.isBox && coordinate.UpperTile.UpperTile.isWall)) return;
             if (coordinate.UpperTile.isBox)
                 coordinate.UpperTile.boxBehaviour.MovingBox(coordinate.UpperTile.UpperTile);
+            SoundFXManager.instance.PlaySoundFXClip(walkSound);
             targetPos = coordinate.UpperTile.transform.position;
             StartCoroutine(WalkInterval(walkInterval));
             OnPlayerMoveSubscription.Instance.CheckPlayerMove();
@@ -65,6 +69,7 @@ public class Player : MonoBehaviour
             if (coordinate.LowerTile.isWall || (coordinate.LowerTile.isBox && coordinate.LowerTile.LowerTile.isWall)) return;
             if (coordinate.LowerTile.isBox)
                 coordinate.LowerTile.boxBehaviour.MovingBox(coordinate.LowerTile.LowerTile);
+            SoundFXManager.instance.PlaySoundFXClip(walkSound);
             targetPos = coordinate.LowerTile.transform.position;
             StartCoroutine(WalkInterval(walkInterval));
             OnPlayerMoveSubscription.Instance.CheckPlayerMove();
@@ -75,6 +80,7 @@ public class Player : MonoBehaviour
             if (coordinate.LeftTile.isBox)
                 coordinate.LeftTile.boxBehaviour.MovingBox(coordinate.LeftTile.LeftTile);
             sr.flipX = true;
+            SoundFXManager.instance.PlaySoundFXClip(walkSound);
             targetPos = coordinate.LeftTile.transform.position;
             StartCoroutine(WalkInterval(walkInterval));
             OnPlayerMoveSubscription.Instance.CheckPlayerMove();
@@ -85,6 +91,7 @@ public class Player : MonoBehaviour
             if (coordinate.RightTile.isBox)
                 coordinate.RightTile.boxBehaviour.MovingBox(coordinate.RightTile.RightTile);
             sr.flipX = false;
+            SoundFXManager.instance.PlaySoundFXClip(walkSound);
             targetPos = coordinate.RightTile.transform.position;
             StartCoroutine(WalkInterval(walkInterval));
             OnPlayerMoveSubscription.Instance.CheckPlayerMove();
@@ -97,6 +104,12 @@ public class Player : MonoBehaviour
         isCooldown = true;
         yield return new WaitForSeconds(time);
         isCooldown = false;
+    }
+
+    private void OnDrawGizmos()
+    {
+        Gizmos.color = Color.red;
+        Gizmos.DrawWireCube(transform.position, Vector3.one * 3f);
     }
 
     public void SetWeapon(bool havAPao) => havWeapon = havAPao;

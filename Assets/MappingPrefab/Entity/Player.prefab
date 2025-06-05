@@ -104,8 +104,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   coordinate: {fileID: 0}
   targetPos: {x: 0, y: 0}
-  walkInterval: 0.1
+  walkInterval: 0.5
   havWeapon: 0
+  walkSound: {fileID: 8300000, guid: e5d22b6835355ea4bbe9f24b7ab12b3f, type: 3}
 --- !u!195 &3191583842233231551
 NavMeshAgent:
   m_ObjectHideFlags: 0
