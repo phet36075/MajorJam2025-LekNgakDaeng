@@ -15,6 +15,12 @@ EditorBuildSettings:
     path: Assets/Petchcious/lv3.unity
     guid: bebb6cf7b92f1c94f8f8bb0e3d60f361
   - enabled: 1
+    path: Assets/Dos/Scene/Level4.unity
+    guid: a4c3213cd8a134742b519860d125bf19
+  - enabled: 1
+    path: Assets/Dos/Scene/Level5.unity
+    guid: 34b1da84afbf2e8428e94efa690d9e1e
+  - enabled: 1
     path: Assets/TanTan/Level/lv6.unity
     guid: 3df87376b65a1e0408da4e1626c5546b
   - enabled: 1
