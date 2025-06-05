@@ -35,6 +35,7 @@ public class GridManager : MonoBehaviour
     private void Awake()
     {
         coord = new List<CoordScript>();
+
         DrawGrid();
     }
 

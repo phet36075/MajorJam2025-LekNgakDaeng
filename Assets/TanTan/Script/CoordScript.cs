@@ -5,7 +5,7 @@ public class CoordScript : MonoBehaviour
     Player player => FindAnyObjectByType<Player>(); 
     SpamGamePlayer spamGamePlayer => FindAnyObjectByType<SpamGamePlayer>();
     Goal goal => FindAnyObjectByType<Goal>();
-    Enemy enemy => FindAnyObjectByType<Enemy>();
+    Enemy[] enemy => FindObjectsByType<Enemy>(FindObjectsSortMode.None);
     BoxBehaviour box => FindAnyObjectByType<BoxBehaviour>();
     public Wall wall;
 
@@ -81,9 +81,11 @@ public class CoordScript : MonoBehaviour
 
     void EnemyCollide()
     {
-        if (Physics2D.OverlapCircle(transform.position, 0.1f, enemyMask))
+        Collider2D eAtCoor = Physics2D.OverlapCircle(transform.position, 0.1f, enemyMask);
+
+        if (eAtCoor != null)
         {
-            enemy.SetCoord(this);
+            eAtCoor.GetComponent<Enemy>().SetCoord(this);
         }
     }
 
@@ -92,6 +94,10 @@ public class CoordScript : MonoBehaviour
         if (Physics2D.OverlapCircle(transform.position, 0.1f, wallMask))
         {
             isWall = true;
+        }
+        else
+        {
+            isWall = false;
         }
     }
     void BoxCollide()

@@ -28,11 +28,12 @@ public class BoxBehaviour : MonoBehaviour
                 targetPos = c.transform.position;
             }
         }
+        agent.SetDestination(targetPos);
 
     }
     public void MovingBox(CoordScript coor)
     {
-        if (coor.isWall) return;
+        if (coor.isWall || coor.isBox) return;
 
         targetPos = coor.transform.position;
         Debug.Log($"{coor.transform.position}");

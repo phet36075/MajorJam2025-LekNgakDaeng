@@ -17,6 +17,9 @@ public class Goal : MonoBehaviour
     [SerializeField] CoordScript coordinate;
     [SerializeField] Vector2 targetPos = Vector2.zero;
 
+    [Header("Status")]
+    [SerializeField] bool isMoving = false;
+
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -48,7 +51,10 @@ public class Goal : MonoBehaviour
 
     void OnPlayerMove()
     {
-        MoveAwayFromPlayer();
+        if (isMoving)
+            MoveAwayFromPlayer();
+        else
+            return;
     }
 
     void MoveAwayFromPlayer()
