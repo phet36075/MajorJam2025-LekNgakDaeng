@@ -16,9 +16,9 @@ MonoBehaviour:
   MasterVolumeName: MasterVolume
   MasterVolume: 0
   MusicVolumeName: MusicVolume
-  MusicVolume: -40
+  MusicVolume: 2
   MasterSFXVolumeName: MasterSFXVolume
-  MasterSFXVolume: -3.8
+  MasterSFXVolume: -4
   SFXVolumeName: SFXVolume
   SFXVolume: -2.5
   UIVolumeName: UIVolume
