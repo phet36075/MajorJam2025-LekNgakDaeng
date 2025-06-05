@@ -160,12 +160,12 @@ public class Enemy : MonoBehaviour
             {
                 if(sm != null)
                     sm.killAmount++;
-                Destroy(gameObject);
+                gameObject.SetActive(false);
             }
             else
             {
                 wlm.OnLose();
-                Destroy(player.gameObject);
+                player.gameObject.SetActive(false);
             }
         }
     }
@@ -174,17 +174,20 @@ public class Enemy : MonoBehaviour
     {
         if(Physics2D.OverlapBox(transform.position, Vector3.one * 3f, 0f, playerMask))
         {
-            switch(type)
+            if(gameObject.activeSelf != false)
             {
-                case EnemyType.Snake:
-                    SoundFXManager.instance.PlaySoundFXClip(snakeSound);
-                    break;
-                case EnemyType.Fly:
-                    SoundFXManager.instance.PlaySoundFXClip(flySound);
-                    break;
-                case EnemyType.Slime:
-                    SoundFXManager.instance.PlaySoundFXClip(slimeClip);
-                    break;
+                switch(type)
+                {
+                    case EnemyType.Snake:
+                        SoundFXManager.instance.PlaySoundFXClip(snakeSound);
+                        break;
+                    case EnemyType.Fly:
+                        SoundFXManager.instance.PlaySoundFXClip(flySound);
+                        break;
+                    case EnemyType.Slime:
+                        SoundFXManager.instance.PlaySoundFXClip(slimeClip);
+                        break;
+                }
             }
         }
     }

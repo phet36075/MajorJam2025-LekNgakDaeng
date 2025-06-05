@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 
 public class smolPlayer : MonoBehaviour
@@ -6,6 +7,7 @@ public class smolPlayer : MonoBehaviour
     public float speed;
     public Rigidbody2D rb;
     public Vector2 moveDir;
+    public Animator kaboomAnim;
 
     private bool isDead;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
@@ -28,7 +30,24 @@ public class smolPlayer : MonoBehaviour
         {
             isDead = true;
             rb.linearVelocity = Vector2.zero;
+            kaboomAnim.gameObject.SetActive(true);
+            kaboomAnim.Play("Kaboom");
             Debug.Log("Dead");
+            StartCoroutine(waitForBlueboiToShow());
         }
+        if (collision.CompareTag("Finish"))
+        {
+            WinLoseManager win = FindAnyObjectByType<WinLoseManager>();
+            if (win != null)
+            {
+                win.OnWin();
+            }
+        }
+    }
+    IEnumerator waitForBlueboiToShow()
+    {
+        yield return new WaitForSeconds(1.5f);
+        Rigidbody2D rbs = GameObject.Find("BlueBoi").GetComponent<Rigidbody2D>();
+        rbs.linearVelocityY = 2;
     }
 }

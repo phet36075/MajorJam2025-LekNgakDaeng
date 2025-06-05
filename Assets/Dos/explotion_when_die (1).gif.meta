@@ -1,0 +1,546 @@
+fileFormatVersion: 2
+guid: b4e045bec64fe064e90cd59f912ab986
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: -7187164048162527592
+    second: explotion_when_die (1)_0
+  - first:
+      213: -6327934178883419692
+    second: explotion_when_die (1)_1
+  - first:
+      213: -3079584290146713860
+    second: explotion_when_die (1)_2
+  - first:
+      213: -6589978626821188714
+    second: explotion_when_die (1)_3
+  - first:
+      213: 6313508672710217375
+    second: explotion_when_die (1)_4
+  - first:
+      213: -1880173413760317783
+    second: explotion_when_die (1)_5
+  - first:
+      213: -1755051955447998929
+    second: explotion_when_die (1)_6
+  - first:
+      213: 3730801546689762633
+    second: explotion_when_die (1)_7
+  - first:
+      213: 9149185964377116052
+    second: explotion_when_die (1)_8
+  - first:
+      213: 7284878467105017120
+    second: explotion_when_die (1)_9
+  - first:
+      213: 4298623275788180354
+    second: explotion_when_die (1)_10
+  - first:
+      213: 183419464261784167
+    second: explotion_when_die (1)_11
+  - first:
+      213: 8620173782426026595
+    second: explotion_when_die (1)_12
+  - first:
+      213: -9040108163087422989
+    second: explotion_when_die (1)_13
+  - first:
+      213: 3115951842519814010
+    second: explotion_when_die (1)_14
+  - first:
+      213: 6690428781574596840
+    second: explotion_when_die (1)_15
+  - first:
+      213: 57783388281529186
+    second: explotion_when_die (1)_16
+  - first:
+      213: -9083127955805685942
+    second: explotion_when_die (1)_17
+  - first:
+      213: -5535020722590385034
+    second: explotion_when_die (1)_18
+  - first:
+      213: -2639492672270475398
+    second: explotion_when_die (1)_19
+  - first:
+      213: 7413639277034653505
+    second: explotion_when_die (1)_20
+  - first:
+      213: -8662196835012971440
+    second: explotion_when_die (1)_21
+  - first:
+      213: 4315816445413691351
+    second: explotion_when_die (1)_22
+  - first:
+      213: -4915828178361467494
+    second: explotion_when_die (1)_23
+  - first:
+      213: 6527105300097550553
+    second: explotion_when_die (1)_24
+  - first:
+      213: -2892323957034017588
+    second: explotion_when_die (1)_25
+  - first:
+      213: -3442156075437704405
+    second: explotion_when_die (1)_26
+  - first:
+      213: 5346382250013258662
+    second: explotion_when_die (1)_27
+  - first:
+      213: -6567656417768046225
+    second: explotion_when_die (1)_28
+  - first:
+      213: -8914574940581189743
+    second: explotion_when_die (1)_29
+  - first:
+      213: -8652134801692069193
+    second: explotion_when_die (1)_30
+  - first:
+      213: 5605087174650946025
+    second: explotion_when_die (1)_31
+  - first:
+      213: -2650963825655267056
+    second: explotion_when_die (1)_32
+  - first:
+      213: -4399895851323232909
+    second: explotion_when_die (1)_33
+  - first:
+      213: 6321018933110210569
+    second: explotion_when_die (1)_34
+  - first:
+      213: -2202892393662356130
+    second: explotion_when_die (1)_35
+  - first:
+      213: -7690971370083986350
+    second: explotion_when_die (1)_36
+  - first:
+      213: -5278500972369797643
+    second: explotion_when_die (1)_37
+  - first:
+      213: -4823770447646510079
+    second: explotion_when_die (1)_38
+  - first:
+      213: -8964465503447511595
+    second: explotion_when_die (1)_39
+  - first:
+      213: 787626867274360361
+    second: explotion_when_die (1)_40
+  - first:
+      213: 4220235338639847256
+    second: explotion_when_die (1)_41
+  - first:
+      213: -3901324321813490747
+    second: explotion_when_die (1)_42
+  - first:
+      213: -8101898783000250208
+    second: explotion_when_die (1)_43
+  - first:
+      213: 4658120679018043370
+    second: explotion_when_die (1)_44
+  - first:
+      213: 32476237333736375
+    second: explotion_when_die (1)_45
+  - first:
+      213: -3095359730211667483
+    second: explotion_when_die (1)_46
+  - first:
+      213: -3346168899187016167
+    second: explotion_when_die (1)_47
+  - first:
+      213: 786082186824143032
+    second: explotion_when_die (1)_48
+  - first:
+      213: 8642882646774286894
+    second: explotion_when_die (1)_49
+  - first:
+      213: 1554473268582723319
+    second: explotion_when_die (1)_50
+  - first:
+      213: 5077250615528115389
+    second: explotion_when_die (1)_51
+  - first:
+      213: -4263716098790896571
+    second: explotion_when_die (1)_52
+  - first:
+      213: 333221936299873639
+    second: explotion_when_die (1)_53
+  - first:
+      213: 8578147173648011968
+    second: explotion_when_die (1)_54
+  - first:
+      213: 8257940841149954346
+    second: explotion_when_die (1)_55
+  - first:
+      213: -4194686569995901096
+    second: explotion_when_die (1)_56
+  - first:
+      213: 2417571147116304813
+    second: explotion_when_die (1)_57
+  - first:
+      213: 315701556188628897
+    second: explotion_when_die (1)_58
+  - first:
+      213: 4843112629129663779
+    second: explotion_when_die (1)_59
+  - first:
+      213: -7957955329902832758
+    second: explotion_when_die (1)_60
+  - first:
+      213: -8316779925610324638
+    second: explotion_when_die (1)_61
+  - first:
+      213: -1437030291830535468
+    second: explotion_when_die (1)_62
+  - first:
+      213: 2488557694924578555
+    second: explotion_when_die (1)_63
+  - first:
+      213: -2627759259431819402
+    second: explotion_when_die (1)_64
+  - first:
+      213: 2958001150558722636
+    second: explotion_when_die (1)_65
+  - first:
+      213: 7002147407281391888
+    second: explotion_when_die (1)_66
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 0
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Android
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: explotion_when_die (1)_8
+      rect:
+        serializedVersion: 2
+        x: 600
+        y: 564
+        width: 200
+        height: 282
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6b34175bccb29b545bfbd0be46e9f06d
+      internalID: 1824253719
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: explotion_when_die (1)_9
+      rect:
+        serializedVersion: 2
+        x: 800
+        y: 564
+        width: 200
+        height: 282
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9126f0dd1ee509f49947f874433328c1
+      internalID: 1801518941
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: explotion_when_die (1)_10
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 282
+        width: 200
+        height: 282
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8e721a5e790c0ff4d9d8228b28853d89
+      internalID: 1457039348
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: explotion_when_die (1)_11
+      rect:
+        serializedVersion: 2
+        x: 200
+        y: 282
+        width: 200
+        height: 282
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 58aab70b96c59d945b4868ffcc64b5e2
+      internalID: -1875096107
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: explotion_when_die (1)_12
+      rect:
+        serializedVersion: 2
+        x: 400
+        y: 282
+        width: 200
+        height: 282
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3e9b61033bc5956408276ccf34ca2e6c
+      internalID: 302020631
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: explotion_when_die (1)_13
+      rect:
+        serializedVersion: 2
+        x: 600
+        y: 282
+        width: 200
+        height: 282
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9a181c2c9f3b77241be1f566d588fb3b
+      internalID: -772348364
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: explotion_when_die (1)_14
+      rect:
+        serializedVersion: 2
+        x: 800
+        y: 282
+        width: 200
+        height: 282
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: eb2ace0ce2efbb44a9b027750cdf449d
+      internalID: 1364793866
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: explotion_when_die (1)_15
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 0
+        width: 200
+        height: 282
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 195a9ed8eafef9f47964b9915525d295
+      internalID: -1074115179
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: explotion_when_die (1)_16
+      rect:
+        serializedVersion: 2
+        x: 200
+        y: 0
+        width: 200
+        height: 282
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: eda7c2a2f327c89479c2085cae8208f4
+      internalID: 498624608
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: 07e86b9024611ce45b1eaf977dd32074
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries: []
+    nameFileIdTable:
+      explotion_when_die (1)_0: -112680787
+      explotion_when_die (1)_1: 163331088
+      explotion_when_die (1)_10: 1457039348
+      explotion_when_die (1)_11: -1875096107
+      explotion_when_die (1)_12: 302020631
+      explotion_when_die (1)_13: -772348364
+      explotion_when_die (1)_14: 1364793866
+      explotion_when_die (1)_15: -1074115179
+      explotion_when_die (1)_16: 498624608
+      explotion_when_die (1)_2: 2134766659
+      explotion_when_die (1)_3: -1636921093
+      explotion_when_die (1)_4: 2124291294
+      explotion_when_die (1)_5: -520146146
+      explotion_when_die (1)_6: -1911719536
+      explotion_when_die (1)_7: -1831640474
+      explotion_when_die (1)_8: 1824253719
+      explotion_when_die (1)_9: 1801518941
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
