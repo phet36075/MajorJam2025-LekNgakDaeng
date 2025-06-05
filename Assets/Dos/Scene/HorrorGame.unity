@@ -4711,6 +4711,70 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 2882826218053604946, guid: bbd82a3d9256e25438ced764d8e8f2f3, type: 3}
+      propertyPath: onWin.m_PersistentCalls.m_Calls.Array.size
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 2882826218053604946, guid: bbd82a3d9256e25438ced764d8e8f2f3, type: 3}
+      propertyPath: onWin.m_PersistentCalls.m_Calls.Array.data[1].m_Mode
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 2882826218053604946, guid: bbd82a3d9256e25438ced764d8e8f2f3, type: 3}
+      propertyPath: onWin.m_PersistentCalls.m_Calls.Array.data[2].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2882826218053604946, guid: bbd82a3d9256e25438ced764d8e8f2f3, type: 3}
+      propertyPath: onWin.m_PersistentCalls.m_Calls.Array.data[3].m_Mode
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 2882826218053604946, guid: bbd82a3d9256e25438ced764d8e8f2f3, type: 3}
+      propertyPath: onWin.m_PersistentCalls.m_Calls.Array.data[1].m_Target
+      value: 
+      objectReference: {fileID: 1397907828}
+    - target: {fileID: 2882826218053604946, guid: bbd82a3d9256e25438ced764d8e8f2f3, type: 3}
+      propertyPath: onWin.m_PersistentCalls.m_Calls.Array.data[2].m_Target
+      value: 
+      objectReference: {fileID: 1397907827}
+    - target: {fileID: 2882826218053604946, guid: bbd82a3d9256e25438ced764d8e8f2f3, type: 3}
+      propertyPath: onWin.m_PersistentCalls.m_Calls.Array.data[3].m_Target
+      value: 
+      objectReference: {fileID: 1397907827}
+    - target: {fileID: 2882826218053604946, guid: bbd82a3d9256e25438ced764d8e8f2f3, type: 3}
+      propertyPath: onWin.m_PersistentCalls.m_Calls.Array.data[1].m_MethodName
+      value: PlayAnimName
+      objectReference: {fileID: 0}
+    - target: {fileID: 2882826218053604946, guid: bbd82a3d9256e25438ced764d8e8f2f3, type: 3}
+      propertyPath: onWin.m_PersistentCalls.m_Calls.Array.data[2].m_MethodName
+      value: CompleteStageThis
+      objectReference: {fileID: 0}
+    - target: {fileID: 2882826218053604946, guid: bbd82a3d9256e25438ced764d8e8f2f3, type: 3}
+      propertyPath: onWin.m_PersistentCalls.m_Calls.Array.data[3].m_MethodName
+      value: PlayWinOrLoseAnimAndLoadScene
+      objectReference: {fileID: 0}
+    - target: {fileID: 2882826218053604946, guid: bbd82a3d9256e25438ced764d8e8f2f3, type: 3}
+      propertyPath: onWin.m_PersistentCalls.m_Calls.Array.data[1].m_TargetAssemblyTypeName
+      value: PlayAnim, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 2882826218053604946, guid: bbd82a3d9256e25438ced764d8e8f2f3, type: 3}
+      propertyPath: onWin.m_PersistentCalls.m_Calls.Array.data[2].m_TargetAssemblyTypeName
+      value: LoadSceneAndPlayAnimation, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 2882826218053604946, guid: bbd82a3d9256e25438ced764d8e8f2f3, type: 3}
+      propertyPath: onWin.m_PersistentCalls.m_Calls.Array.data[2].m_Arguments.m_IntArgument
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2882826218053604946, guid: bbd82a3d9256e25438ced764d8e8f2f3, type: 3}
+      propertyPath: onWin.m_PersistentCalls.m_Calls.Array.data[3].m_Arguments.m_IntArgument
+      value: 21
+      objectReference: {fileID: 0}
+    - target: {fileID: 2882826218053604946, guid: bbd82a3d9256e25438ced764d8e8f2f3, type: 3}
+      propertyPath: onWin.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_StringArgument
+      value: All Done
+      objectReference: {fileID: 0}
+    - target: {fileID: 2882826218053604946, guid: bbd82a3d9256e25438ced764d8e8f2f3, type: 3}
+      propertyPath: onWin.m_PersistentCalls.m_Calls.Array.data[1].m_Arguments.m_StringArgument
+      value: Win_Appear_anim
+      objectReference: {fileID: 0}
     - target: {fileID: 3057968928018983556, guid: bbd82a3d9256e25438ced764d8e8f2f3, type: 3}
       propertyPath: m_Name
       value: __UI
@@ -4759,6 +4823,10 @@ PrefabInstance:
       propertyPath: sceneIndex
       value: 19
       objectReference: {fileID: 0}
+    - target: {fileID: 6384145859032941651, guid: bbd82a3d9256e25438ced764d8e8f2f3, type: 3}
+      propertyPath: m_text
+      value: All Done
+      objectReference: {fileID: 0}
     - target: {fileID: 8215838617240189260, guid: bbd82a3d9256e25438ced764d8e8f2f3, type: 3}
       propertyPath: m_text
       value: '20
@@ -4774,6 +4842,28 @@ PrefabInstance:
       addedObject: {fileID: 1494365201}
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: bbd82a3d9256e25438ced764d8e8f2f3, type: 3}
+--- !u!114 &1397907827 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 4215009725088130144, guid: bbd82a3d9256e25438ced764d8e8f2f3, type: 3}
+  m_PrefabInstance: {fileID: 1397907826}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1965cb52d9a400b43b0981164442c288, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &1397907828 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 478495779423894083, guid: bbd82a3d9256e25438ced764d8e8f2f3, type: 3}
+  m_PrefabInstance: {fileID: 1397907826}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 67ec54c6d04040a45b70589e66d1620e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1446811657
 GameObject:
   m_ObjectHideFlags: 0
@@ -6878,7 +6968,7 @@ Transform:
   m_GameObject: {fileID: 1931833892}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -7.586, y: -4.152, z: 0}
+  m_LocalPosition: {x: -7.4999995, y: -4.15, z: 0}
   m_LocalScale: {x: 0.15709202, y: 0.15709202, z: 0.15709202}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -6897,11 +6987,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d7d92412f6771e547b7050267db5418d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 1
+  speed: 3
   rb: {fileID: 0}
   moveDir: {x: 0, y: 0}
   kaboomAnim: {fileID: 2009978063}
   kaboomSound: {fileID: 8300000, guid: d331a79ae658ae0459a2bfb7d934dcd9, type: 3}
+  walkSound: {fileID: 8300000, guid: d4f1654a9aea6f34ea959ed2baf5ae42, type: 3}
 --- !u!1 &1947399401
 GameObject:
   m_ObjectHideFlags: 0

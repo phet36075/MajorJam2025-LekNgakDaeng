@@ -32,6 +32,19 @@ public class SoundFXManager : MonoBehaviour
         Destroy(audioSource.gameObject,clipLength);
         
     }
+    
+    public void PlaySoundFXClipAndDestroy(AudioClip audioClip,float time)
+    {
+        AudioSource audioSource = Instantiate(soundFXObject);
+
+        audioSource.clip = audioClip;
+
+        audioSource.Play();
+        //float clipLength = audioSource.clip.length;
+       
+        Destroy(audioSource.gameObject,time);
+        
+    }
 
     public void PlayRandomSoundFXClip(AudioClip[] audioClip)
     {

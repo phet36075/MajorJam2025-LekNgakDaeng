@@ -9,6 +9,7 @@ public class smolPlayer : MonoBehaviour
     public Vector2 moveDir;
     public Animator kaboomAnim;
     public AudioClip kaboomSound;
+    public AudioClip walkSound;
 
     private bool isDead;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
@@ -34,7 +35,9 @@ public class smolPlayer : MonoBehaviour
             kaboomAnim.gameObject.SetActive(true);
             kaboomAnim.Play("Kaboom");
             SoundFXManager.instance.PlaySoundFXClip(kaboomSound);
+            StartCoroutine(waitAndPlayWalkSound());
             StartCoroutine(waitForBlueboiToShow());
+            
         }
         if (collision.CompareTag("Finish"))
         {
@@ -50,5 +53,11 @@ public class smolPlayer : MonoBehaviour
         yield return new WaitForSeconds(1.5f);
         Rigidbody2D rbs = GameObject.Find("BlueBoi").GetComponent<Rigidbody2D>();
         rbs.linearVelocityY = 2;
+    }
+    
+    IEnumerator waitAndPlayWalkSound()
+    {
+        yield return new WaitForSeconds(1.5f);
+        SoundFXManager.instance.PlaySoundFXClipAndDestroy(walkSound,4);
     }
 }
