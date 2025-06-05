@@ -6,7 +6,13 @@ public class PauseGameManager : MonoBehaviour
     public KeyCode resetKey = KeyCode.R;
     public GameObject pausePanel;
 
-    public int SceneIndex = 0;
+    public int sceneIndex = 0;
+
+    public int SceneIndex
+    {
+        get { return sceneIndex; }
+        set { sceneIndex = value; }
+    }
     LoadSceneAndPlayAnimation _loadSceneAndPlayAnimation => FindAnyObjectByType<LoadSceneAndPlayAnimation>();
     
     // Start is called once before the first execution of Update after the MonoBehaviour is created
@@ -14,7 +20,7 @@ public class PauseGameManager : MonoBehaviour
     {
         pausePanel.SetActive(false);
     }
-
+    
     private bool isPasued = false;
     // Update is called once per frame
     void Update()

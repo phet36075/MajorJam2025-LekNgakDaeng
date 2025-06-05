@@ -4,6 +4,7 @@ using UnityEngine.SceneManagement;
 
 public class LoadSceneAndPlayAnimation : MonoBehaviour
 {
+    private PauseGameManager _pauseGameManager => FindAnyObjectByType<PauseGameManager>();
   public Animator animator;
   public string animName;
   public float waitingTime;
@@ -12,6 +13,17 @@ public class LoadSceneAndPlayAnimation : MonoBehaviour
   {
       StartCoroutine(PlayAnimAndLoadScene(sceneIndex));
   }
+
+  public void Win()
+  {
+      StartCoroutine(WinSeq());
+  }
+
+  public void Lose()
+  {
+      StartCoroutine(LoseSeq());
+  }
+  
   public void PlayWinOrLoseAnimAndLoadScene(int sceneIndex)
   {
       StartCoroutine(WinAnimOrLoseAndLoadScene(sceneIndex));
@@ -37,6 +49,30 @@ public class LoadSceneAndPlayAnimation : MonoBehaviour
     SceneManager.LoadScene(sceneIndex);
   }
 
+  public IEnumerator WinSeq()
+  {
+      yield return new WaitForSeconds(delay);
+      if (animator != null)
+      {
+          animator.SetTrigger(animName);
+      }
+         
+      yield return new WaitForSeconds(waitingTime);
+
+      SceneManager.LoadScene(_pauseGameManager.SceneIndex+1);
+  }
+  public IEnumerator LoseSeq()
+  {
+      yield return new WaitForSeconds(delay);
+      if (animator != null)
+      {
+          animator.SetTrigger(animName);
+      }
+         
+      yield return new WaitForSeconds(waitingTime);
+
+      SceneManager.LoadScene(_pauseGameManager.SceneIndex);
+  }
   public void LoadScene(int sceneIndex)
   {
       SceneManager.LoadScene(sceneIndex);
@@ -60,5 +96,16 @@ public class LoadSceneAndPlayAnimation : MonoBehaviour
       }
       
   }
-  
+  public void CompleteStageThis()
+  {
+      int unlockedStage = PlayerPrefs.GetInt("UnlockedStage", 1);
+
+      if (_pauseGameManager.SceneIndex >= unlockedStage)
+      {
+          PlayerPrefs.SetInt("UnlockedStage", _pauseGameManager.SceneIndex + 1);
+          PlayerPrefs.Save();
+          Debug.Log("Unlocked Stage" + unlockedStage);
+      }
+      
+  }
 }
