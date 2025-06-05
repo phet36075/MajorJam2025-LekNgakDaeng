@@ -15,23 +15,29 @@ public class ColorWallBehavior : MonoBehaviour
     [SerializeField]private bool IsBatchRandomized;
     [SerializeField]private ColorType WallColor;
 
+    [SerializeField] bool is11 = false;
+
     void Start()
     {
         SpR = GetComponent<SpriteRenderer>();
         CMix = FindAnyObjectByType<ColorMixManager>();
         NavMeshMod = GetComponent<NavMeshModifier>();
 
-        if (!IsBatchRandomized)
+        if(is11)
         {
             if (IsSingleRandomized)
             {
-                SpR.color = CMix.ColorWallRandomized();
+                do
+                    SpR.color = CMix.ColorWallRandomized();
+                while (SpR.color == CMix.Green);
+                    
             }
-            else
+        }
+        else
+        {
+            if (IsSingleRandomized)
             {
-
-                SpR.color = CMix.ColorWallManual(WallColor);
-
+               SpR.color = CMix.ColorWallRandomized();
             }
         }
        
