@@ -8,6 +8,7 @@ public class Collectible : MonoBehaviour
 
     [Header("Reference")]
     [SerializeField] LayerMask playerMask;
+    [SerializeField] AudioClip collectSound;
 
     [Header("Coordinate")]
     [SerializeField] Vector2 targetPos;
@@ -39,6 +40,7 @@ public class Collectible : MonoBehaviour
     {
         if(Physics2D.OverlapCircle(transform.position, 0.1f, playerMask))
         {
+            SoundFXManager.instance.PlaySoundFXClip(collectSound);
             player.SetWeapon(true);
             Destroy(gameObject);
         }

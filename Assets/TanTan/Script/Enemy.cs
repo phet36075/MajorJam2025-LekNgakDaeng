@@ -39,6 +39,7 @@ public class Enemy : MonoBehaviour
     [SerializeField] AudioClip flySound;
     [SerializeField] AudioClip snakeSound;
     [SerializeField] AudioClip slimeClip;
+    [SerializeField] AudioClip killSound;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -158,7 +159,8 @@ public class Enemy : MonoBehaviour
         {
             if(player.havWeapon)
             {
-                if(sm != null)
+                SoundFXManager.instance.PlaySoundFXClip(killSound);
+                if (sm != null)
                     sm.killAmount++;
                 gameObject.SetActive(false);
             }

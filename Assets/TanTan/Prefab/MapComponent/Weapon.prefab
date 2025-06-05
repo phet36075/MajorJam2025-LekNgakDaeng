@@ -104,6 +104,7 @@ MonoBehaviour:
   playerMask:
     serializedVersion: 2
     m_Bits: 8
+  collectSound: {fileID: 8300000, guid: 6db9f215c7eaae6498718eea333790fe, type: 3}
   targetPos: {x: 0, y: 0}
 --- !u!58 &8929776955352914788
 CircleCollider2D:
