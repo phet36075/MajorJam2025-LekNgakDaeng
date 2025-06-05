@@ -9,7 +9,7 @@ public class ColorWallBatchRandom : MonoBehaviour
     [SerializeField] private ColorType ExcludedColor;
 
     [Header("Debug Display")]
-    [SerializeField]private ColorType outputColor;
+    public ColorType outputColor;
     void Start()
     {
 
