@@ -67,9 +67,8 @@ namespace Petchcious.Trade_Game
                 yield return null;
             }
             
-            Destroy(heldItemObj);
+            heldItemObj.SetActive(false);
         }
     }
-
 }
 

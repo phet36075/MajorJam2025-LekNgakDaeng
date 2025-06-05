@@ -36,6 +36,18 @@ EditorBuildSettings:
     path: Assets/Petchcious/lv10.unity
     guid: 6ccd6f6ec1283d749a273f69f395da76
   - enabled: 1
+    path: Assets/Neuromancer/ColorMix/Lvl11.unity
+    guid: b4aa56be2ab32df458648da149ddb2e4
+  - enabled: 1
+    path: Assets/Petchcious/lv12.unity
+    guid: ed38199c4d143bc4db233aec8c4273a1
+  - enabled: 1
+    path: Assets/Dos/Scene/Level13.unity
+    guid: 25df58966f5ede240acd5c981f54a33a
+  - enabled: 1
+    path: Assets/Dos/Scene/Level14.unity
+    guid: a276e3542d7eb0b4b9cd1efe2d0aa2a3
+  - enabled: 1
     path: Assets/Petchcious/MainMenu.unity
     guid: a227701e313a2b44593a2e2d55f343dc
   - enabled: 1
