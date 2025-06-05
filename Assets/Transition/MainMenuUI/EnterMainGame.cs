@@ -47,4 +47,18 @@ public class LoadSceneAndPlayAnimation : MonoBehaviour
       animator.SetTrigger(animName);
   }
   
+  
+  public void CompleteStage(int currentStage)
+  {
+      int unlockedStage = PlayerPrefs.GetInt("UnlockedStage", 1);
+
+      if (currentStage >= unlockedStage)
+      {
+          PlayerPrefs.SetInt("UnlockedStage", currentStage + 1);
+          PlayerPrefs.Save();
+          Debug.Log("Unlocked Stage" + unlockedStage);
+      }
+      
+  }
+  
 }
