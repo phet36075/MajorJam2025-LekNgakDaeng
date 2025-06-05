@@ -5,10 +5,11 @@ using UnityEngine.SceneManagement;
 
 public class StageButtonManager : MonoBehaviour
 {
+    [SerializeField] private LoadSceneAndPlayAnimation _loadSceneAndPlayAnimation;
     public Transform buttonParent; // พาเรนต์ที่เก็บปุ่มไว้
     public int[] stageSceneIndex; // 
     public GameObject buttonPrefab; // Prefab ของปุ่ม (มี Text และ LockIcon)
-
+    public AudioClip clickSound;
     void Start()
     {
         int unlockedStage = PlayerPrefs.GetInt("UnlockedStage", 1);
@@ -30,7 +31,11 @@ public class StageButtonManager : MonoBehaviour
             if (isUnlocked)
             {
                 int sceneToLoad = stageSceneIndex[i];
-                button.onClick.AddListener(() => SceneManager.LoadScene(sceneToLoad));
+                button.onClick.AddListener(() => SoundFXManager.instance.PlaySoundFXClip(clickSound));
+               // _loadSceneAndPlayAnimation.PlayAnimationAndLoadScene(sceneToLoad);
+                button.onClick.AddListener(() =>  _loadSceneAndPlayAnimation.PlayAnimationAndLoadScene(sceneToLoad));
+               // button.onClick.AddListener(() => SceneManager.LoadScene(sceneToLoad));
+               
             }
         }
     }
