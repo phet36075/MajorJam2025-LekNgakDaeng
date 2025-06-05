@@ -5,6 +5,7 @@ namespace Petchcious.Trade_Game
 {
     public class ServeZone_Petchcious : MonoBehaviour
     {
+        private WinLoseManager _winLoseManager => FindAnyObjectByType<WinLoseManager>();
         public TradeManager_Petchcious tradeManager;
         [SerializeField] LayerMask layerMask;
 
@@ -67,13 +68,13 @@ namespace Petchcious.Trade_Game
         public void TradeGame_Win()
         {
           
-           
+            _winLoseManager.OnWin();
             Debug.Log("Trade Game Win!!");
         }
 
         public void TradeGame_Lose()
         {
-           
+            _winLoseManager.OnLose();
             Debug.Log("Trade Game Lose!!");
         }
 
