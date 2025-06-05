@@ -546,7 +546,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   bgmSource: {fileID: 233829942}
-  defaultBGM: {fileID: 8300000, guid: b808d8ee103f423419f51fd4e51044d6, type: 3}
+  defaultBGM: {fileID: 8300000, guid: 14e8d160ff4a4ff4ba733b6f684cdbe1, type: 3}
 --- !u!1 &312504260
 GameObject:
   m_ObjectHideFlags: 0
