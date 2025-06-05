@@ -3,6 +3,13 @@ using UnityEngine;
 using UnityEngine.AI;
 using System.Collections.Generic;
 
+enum EnemyType
+{
+    Snake,
+    Fly,
+    Slime
+}
+
 public class Enemy : MonoBehaviour
 {
     SpriteRenderer sr => GetComponent<SpriteRenderer>();
@@ -24,6 +31,14 @@ public class Enemy : MonoBehaviour
     [SerializeField] bool canDown = true;
     [SerializeField] bool canLeft = true;
     [SerializeField] bool canRight = true;
+
+    [Header("Enemy Type")]
+    [SerializeField] EnemyType type;
+
+    [Header("Sound")]
+    [SerializeField] AudioClip flySound;
+    [SerializeField] AudioClip snakeSound;
+    [SerializeField] AudioClip slimeClip;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -96,6 +111,8 @@ public class Enemy : MonoBehaviour
                         sr.flipX = false;
                 }
 
+                PlaySoundCondition();
+
                 return;
             }
         }
@@ -129,6 +146,8 @@ public class Enemy : MonoBehaviour
                         sr.flipX = false;
                 }
 
+                PlaySoundCondition();
+
                 return;
             }
         }
@@ -151,10 +170,33 @@ public class Enemy : MonoBehaviour
         }
     }
 
+    void PlaySoundCondition()
+    {
+        if(Physics2D.OverlapBox(transform.position, Vector3.one * 3f, 0f, playerMask))
+        {
+            switch(type)
+            {
+                case EnemyType.Snake:
+                    SoundFXManager.instance.PlaySoundFXClip(snakeSound);
+                    break;
+                case EnemyType.Fly:
+                    SoundFXManager.instance.PlaySoundFXClip(flySound);
+                    break;
+                case EnemyType.Slime:
+                    SoundFXManager.instance.PlaySoundFXClip(slimeClip);
+                    break;
+            }
+        }
+    }
+
+
     private void OnDrawGizmos()
     {
         Gizmos.color = Color.red;
         Gizmos.DrawWireSphere(transform.position, .52f);
+
+        Gizmos.color = Color.white;
+        Gizmos.DrawWireCube(transform.position, Vector3.one * 3f);
     }
 
     public void SetCoord(CoordScript cs) => coordinate = cs;

@@ -6,6 +6,12 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
+    path: Assets/TanTan/Level/lv1.unity
+    guid: ab15bf246f61ec345ae979b29c16d263
+  - enabled: 1
+    path: Assets/TanTan/Level/lv2.unity
+    guid: 8e080d0d30258a348b5028ac161a09e3
+  - enabled: 1
     path: Assets/Petchcious/lv3.unity
     guid: bebb6cf7b92f1c94f8f8bb0e3d60f361
   - enabled: 1

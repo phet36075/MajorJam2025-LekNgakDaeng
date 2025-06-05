@@ -106,11 +106,5 @@ public class Player : MonoBehaviour
         isCooldown = false;
     }
 
-    private void OnDrawGizmos()
-    {
-        Gizmos.color = Color.red;
-        Gizmos.DrawWireCube(transform.position, Vector3.one * 3f);
-    }
-
     public void SetWeapon(bool havAPao) => havWeapon = havAPao;
 }

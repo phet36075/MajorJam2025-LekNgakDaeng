@@ -111,6 +111,10 @@ MonoBehaviour:
   canDown: 1
   canLeft: 1
   canRight: 1
+  type: 2
+  flySound: {fileID: 8300000, guid: e05174fe808f87c4baa42a842ec2fbbd, type: 3}
+  snakeSound: {fileID: 8300000, guid: c3ffca9bb5e935741aeb88244416c956, type: 3}
+  slimeClip: {fileID: 8300000, guid: 6866b06f750604b49b45b8a044eeaedb, type: 3}
 --- !u!195 &5648145407560244798
 NavMeshAgent:
   m_ObjectHideFlags: 0
