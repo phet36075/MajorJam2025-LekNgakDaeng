@@ -18,6 +18,8 @@ public class Player : MonoBehaviour
 
     [Header("Resource")]
     public bool havWeapon = false;
+    [SerializeField] GameObject rightKnife;
+    [SerializeField] GameObject leftKnife;
 
     [Header("Sound")]
     [SerializeField] AudioClip walkSound;
@@ -49,6 +51,10 @@ public class Player : MonoBehaviour
     {
         agent.SetDestination(targetPos);
         PlayerController();
+        if (sr.flipX)
+            WeaponVisualization(leftKnife);
+        else
+            WeaponVisualization(rightKnife);
     }
 
     void PlayerController()
@@ -79,7 +85,7 @@ public class Player : MonoBehaviour
             if (coordinate.LeftTile.isWall || (coordinate.LeftTile.isBox && coordinate.LeftTile.LeftTile.isWall)) return;
             if (coordinate.LeftTile.isBox)
                 coordinate.LeftTile.boxBehaviour.MovingBox(coordinate.LeftTile.LeftTile);
-            sr.flipX = true;
+            sr.flipX = true;    
             SoundFXManager.instance.PlaySoundFXClip(walkSound);
             targetPos = coordinate.LeftTile.transform.position;
             StartCoroutine(WalkInterval(walkInterval));
@@ -90,7 +96,7 @@ public class Player : MonoBehaviour
             if (coordinate.RightTile.isWall || (coordinate.RightTile.isBox && coordinate.RightTile.RightTile.isWall)) return;
             if (coordinate.RightTile.isBox)
                 coordinate.RightTile.boxBehaviour.MovingBox(coordinate.RightTile.RightTile);
-            sr.flipX = false;
+            sr.flipX = false;   
             SoundFXManager.instance.PlaySoundFXClip(walkSound);
             targetPos = coordinate.RightTile.transform.position;
             StartCoroutine(WalkInterval(walkInterval));
@@ -104,6 +110,16 @@ public class Player : MonoBehaviour
         isCooldown = true;
         yield return new WaitForSeconds(time);
         isCooldown = false;
+    }
+
+    void WeaponVisualization(GameObject knife)
+    {
+        if (havWeapon)
+        {
+            knife.SetActive(true);
+        }
+        else
+            knife.SetActive(false);
     }
 
     public void SetWeapon(bool havAPao) => havWeapon = havAPao;
