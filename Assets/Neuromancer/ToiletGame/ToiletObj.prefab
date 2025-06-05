@@ -559,6 +559,7 @@ MonoBehaviour:
   DoorObject: {fileID: 7230948751736974483}
   EnemySprite: {fileID: 29181533417356630}
   GoalSprite: {fileID: 1519572103304045643}
+  WrongDoorSfx: {fileID: 8300000, guid: c3ffca9bb5e935741aeb88244416c956, type: 3}
 --- !u!1 &8742469658669644167
 GameObject:
   m_ObjectHideFlags: 0

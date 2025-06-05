@@ -15,6 +15,7 @@ public class ToiletDoor : MonoBehaviour
     [SerializeField] private GameObject DoorObject;
     [SerializeField] private GameObject EnemySprite;
     [SerializeField] private GameObject GoalSprite;
+    [SerializeField] private AudioClip WrongDoorSfx;
 
     private bool IsActivated;
     private bool IsInTrigger;
@@ -64,7 +65,7 @@ public class ToiletDoor : MonoBehaviour
         DoorObject.SetActive(false);
         switch (doorOccupant)
         {
-            case DoorOccupants.Enemy: GameSystem.OnLose(); break; //Lose Function Here
+            case DoorOccupants.Enemy: SoundFXManager.instance.PlaySoundFXClip(WrongDoorSfx); GameSystem.OnLose(); break; //Lose Function Here
             case DoorOccupants.Goal: GameSystem.OnWin();   break;  //Win Function Here
         }
     }
