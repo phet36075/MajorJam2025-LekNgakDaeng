@@ -554,7 +554,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a68625e9040582e408258a1288b77387, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  PlayerSpeedDecrement: 0.1
+  PlayerSpeedDecrement: 0.25
   PlayerInterval: 0
   PlayerCountdownInterval: 5
   PlayerGrid: {fileID: 1933930499}
