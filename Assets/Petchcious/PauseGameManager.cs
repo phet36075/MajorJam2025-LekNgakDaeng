@@ -58,4 +58,11 @@ public class PauseGameManager : MonoBehaviour
         pausePanel.SetActive(false);
         isPasued = false;
     }
+
+    public void PlaySound(AudioClip sound)
+    {
+        SoundFXManager.instance.PlaySoundFXClip(sound);
+    }
+    
+    
 }
