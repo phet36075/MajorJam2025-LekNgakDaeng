@@ -6,19 +6,19 @@ public class PlateManager : MonoBehaviour
 {
     public List<PlateChecker> plateCheckers = new List<PlateChecker>();
 
-    [Header("Level 5")]
+    [Header("AddObj")]
     public GameObject objToSpawn;
     public Transform spawnPos;
 
-    [Header("Level 14")]
-    public GameObject objToRemove;
+    [Header("RemoveObj")]
+    public Animator objToRemove;
     [SerializeField] private Level curLevel;
 
-    private NavMeshSurface[] surface => FindObjectsByType<NavMeshSurface>(FindObjectsSortMode.None);
+    [SerializeField] private NavMeshSurface[] surface;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        
+        surface = FindObjectsByType<NavMeshSurface>(FindObjectsSortMode.None);
     }
     bool isSpawn;
     // Update is called once per frame
@@ -42,25 +42,18 @@ public class PlateManager : MonoBehaviour
     private void RemoveObj()
     {
         if (curLevel == Level.RemoveObj)
-            Destroy(objToRemove);
-        BakeMap();
+            objToRemove.Play("RockDisappear");
     }
 
     private void AddObj()
     {
         if (curLevel == Level.AddObj)
         {
-            Instantiate(objToSpawn, spawnPos.position, Quaternion.identity);
+            GameObject gm = Instantiate(objToSpawn, spawnPos.position, Quaternion.identity);
+            gm.GetComponent<Animator>().Play("AppearRock");
         }
-        BakeMap();
 
-    }
-    private void BakeMap()
-    {
-        foreach (NavMeshSurface checker in surface)
-        {
-            checker.BuildNavMesh();
-        }
+
     }
     enum Level
     {
