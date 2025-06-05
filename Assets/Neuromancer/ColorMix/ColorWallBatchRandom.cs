@@ -5,6 +5,8 @@ public class ColorWallBatchRandom : MonoBehaviour
     [Header("Parameters")]
     [SerializeField] private bool IsOverrideAll;
     [SerializeField] private ColorWallBehavior[] ColorWalls;
+    [SerializeField] private bool IsTwoColor;
+    [SerializeField] private ColorType ExcludedColor;
 
     [Header("Debug Display")]
     [SerializeField]private ColorType outputColor;
@@ -19,13 +21,26 @@ public class ColorWallBatchRandom : MonoBehaviour
         int RandomNum = Random.Range(0, 3);
         switch (RandomNum)
         {
-            case 0: outputColor = ColorType.Orange; ColorOverride(outputColor); return;
-            case 1: outputColor = ColorType.Green; ColorOverride(outputColor); return;
-            case 2: outputColor = ColorType.Purple; ColorOverride(outputColor); return;
-            default: outputColor = ColorType.Orange; ColorOverride(outputColor); return;
+            case 0: outputColor = ColorType.Orange; ColorOverride(outputColor); break;
+            case 1: outputColor = ColorType.Green; ColorOverride(outputColor); break;
+            case 2: outputColor = ColorType.Purple; ColorOverride(outputColor); break;
+            default: outputColor = ColorType.Orange; ColorOverride(outputColor); break;
         }
 
-      
+        if (IsTwoColor)
+        {
+            while(outputColor == ExcludedColor)
+            {
+                RandomNum = Random.Range(0, 3);
+                switch (RandomNum)
+                {
+                    case 0: outputColor = ColorType.Orange; ColorOverride(outputColor); break;
+                    case 1: outputColor = ColorType.Green; ColorOverride(outputColor); break;
+                    case 2: outputColor = ColorType.Purple; ColorOverride(outputColor); break;
+                    default: outputColor = ColorType.Orange; ColorOverride(outputColor); break;
+                }
+            }
+        }
 
     }
 
