@@ -2,15 +2,11 @@ using UnityEngine;
 
 public class BlueBoiCutscene : MonoBehaviour
 {
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
+    public AudioClip slapSound;
+    public void PlaySound()
     {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
+        SoundFXManager.instance.PlaySoundFXClip(slapSound);
+        WinLoseManager winLose = FindAnyObjectByType<WinLoseManager>();
+        winLose.OnLose();
     }
 }

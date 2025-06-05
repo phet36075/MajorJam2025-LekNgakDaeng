@@ -35,6 +35,14 @@ public class smolPlayer : MonoBehaviour
             Debug.Log("Dead");
             StartCoroutine(waitForBlueboiToShow());
         }
+        if (collision.CompareTag("Finish"))
+        {
+            WinLoseManager win = FindAnyObjectByType<WinLoseManager>();
+            if (win != null)
+            {
+                win.OnWin();
+            }
+        }
     }
     IEnumerator waitForBlueboiToShow()
     {

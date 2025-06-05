@@ -22,6 +22,7 @@ public class BlueBoi : MonoBehaviour
         {
             rb.linearVelocityY = 0;
             SoundFXManager.instance.PlaySoundFXClip(slapSound);
+            slapBroAnim.gameObject.SetActive(true);
         }
     }
 }
