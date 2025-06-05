@@ -2034,6 +2034,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4643008031149664506, guid: ced49401f7bba45428814372980aa5a7, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8261428691616958429, guid: ced49401f7bba45428814372980aa5a7, type: 3}
       propertyPath: m_AgentTypeID
       value: -1372625422
@@ -6243,6 +6247,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 3191583842233231551, guid: c4ccb2bc0be721145b3a5ed65d0fcdcd, type: 3}
+      propertyPath: m_ObstacleAvoidanceType
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5523286723924531521, guid: c4ccb2bc0be721145b3a5ed65d0fcdcd, type: 3}
       propertyPath: m_Name
       value: //Player
