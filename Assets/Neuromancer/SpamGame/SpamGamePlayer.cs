@@ -7,6 +7,9 @@ public class SpamGamePlayer : MonoBehaviour
     [Header("Parameters")]
     [SerializeField] private float PlayerSpeedDecrement = 0.1f;
     [SerializeField] private float PlayerInterval;
+    [SerializeField] private float PlayerCountdownInterval;
+
+    private bool CoroutineStarted = false;
     private float PlayerIntervalBonus 
     { 
         get => PlayerInterval;
@@ -32,7 +35,7 @@ public class SpamGamePlayer : MonoBehaviour
         navMeshAgent = GetComponent<NavMeshAgent>();
         Initialization();
         SnapToGrid();
-        StartCoroutine(Move());
+        //StartCoroutine(Move());
     }
 
     IEnumerator Move()
@@ -91,5 +94,20 @@ public class SpamGamePlayer : MonoBehaviour
     {
         navMeshAgent.SetDestination(TargetPosition);
         PlayerSpeedControl();
+
+        if (PlayerCountdownInterval > 0)
+        {
+            PlayerCountdownInterval -= 1f * Time.deltaTime;
+            
+        }
+        else
+        {
+            if (!CoroutineStarted)
+            {
+                
+                StartCoroutine(Move());
+                CoroutineStarted = true;
+            }
+        }
     }
 }
