@@ -8,6 +8,13 @@ namespace Petchcious.Spikes
 {
     public class SpikesRepeater_Petchcious : MonoBehaviour
     {
+        [SerializeField] AudioClip spikeUpSound;   // เสียงหนามขึ้น
+        [SerializeField] AudioClip spikeDownSound; // เสียงหนามลง
+        private bool hasPlayedSpikeUpSound = false;
+        private bool hasPlayedSpikeDownSound = false;
+        private Coroutine spikeUpCoroutine;
+        private Coroutine spikeDownCoroutine;
+
         private WinLoseManager winLoseManager => FindAnyObjectByType<WinLoseManager>();
         
         lv12_startSetup _lv12StartSetup => FindAnyObjectByType<lv12_startSetup>();
@@ -101,25 +108,24 @@ namespace Petchcious.Spikes
                 }
             }
         }
-       public void ActivateSpike()
-       {
-           if (navMesh != null && _navMeshModifier != null)
-           {
-               _navMeshModifier.area = 1;
-               BakeNewNav();
-           }
-           
-            animator.Play("SpikeUp");
-            
-            if (!disableSpikeHitbox)
+        public void ActivateSpike()
+        {
+            if (navMesh != null && _navMeshModifier != null)
             {
-                
-                     
+                _navMeshModifier.area = 1;
+                BakeNewNav();
             }
 
-            
-            Invoke("SpikeIdleUp", spikeUpDelay); 
-            if(!disableAutomaticPierce) 
+            animator.Play("SpikeUp");
+
+            // เล่นเสียงหนามขึ้นและปล่อยให้เสียงเล่นต่อจนจบ
+            if (spikeUpCoroutine == null)
+            {
+                spikeUpCoroutine = StartCoroutine(PlaySpikeSoundContinuously(spikeUpSound));
+            }
+
+            Invoke("SpikeIdleUp", spikeUpDelay);
+            if (!disableAutomaticPierce)
                 Invoke("DeactivateSpike", activeDuration);
         }
 
@@ -129,19 +135,25 @@ namespace Petchcious.Spikes
             animator.Play("SpikeIdleUp");
         }
 
-      public void DeactivateSpike()
+        public void DeactivateSpike()
         {
             if (navMesh != null && _navMeshModifier != null)
             {
                 _navMeshModifier.area = 0;
                 BakeNewNav();
             }
-           
-           
+
             animator.Play("SpikeDown");
+
+            // เล่นเสียงหนามลงและปล่อยให้เสียงเล่นต่อจนจบ
+            if (spikeDownCoroutine == null)
+            {
+                spikeDownCoroutine = StartCoroutine(PlaySpikeSoundContinuously(spikeDownSound));
+            }
+
             isActive = false;
-            if(!disableAutomaticPierce) 
-                Invoke("SpikeIdleDown", spikeDownDelay); 
+            if (!disableAutomaticPierce)
+                Invoke("SpikeIdleDown", spikeDownDelay);
         }
 
         void SpikeIdleDown()
@@ -149,13 +161,34 @@ namespace Petchcious.Spikes
             animator.Play("SpikeIdleDown");
         }
 
-        // private void OnTriggerEnter2D(Collider2D collision)
-        // {
-        //     if (isActive && collision.CompareTag("Player") && !disableSpikeHitbox)
-        //     {
-        //         PlayerCollapseSpike();
-        //     }
-        // }
+        void PlaySpikeSound(AudioClip sound)
+        {
+            SoundFXManager.instance.PlaySoundFXClip(sound);
+        }
+        IEnumerator PlaySpikeSoundContinuously(AudioClip sound)
+        {
+            // เล่นเสียง
+            SoundFXManager.instance.PlaySoundFXClip(sound);
+
+            // รอจนกว่าเสียงจะเล่นจบ
+            yield return new WaitForSeconds(sound.length);
+
+            // เมื่อเสียงเล่นจบแล้ว ก็ปล่อยให้ Coroutine จบ
+            if (sound == spikeUpSound)
+            {
+                spikeUpCoroutine = null;
+            }
+            else if (sound == spikeDownSound)
+            {
+                spikeDownCoroutine = null;
+            }
+        }
+        public void ResetSpikeSounds() 
+        {
+            // รีเซ็ตสถานะเสียงเมื่อหนามถูกรีเซ็ตหรือเริ่มใหม่
+            spikeUpCoroutine = null;
+            spikeDownCoroutine = null;
+        }
 
         public void PlayerCollapseSpike()
         {

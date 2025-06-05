@@ -102,9 +102,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8851d0b9ed5cac742bd99661bd2a2ae6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  spikeUpSound: {fileID: 8300000, guid: 168d7a98bd1bad84bac6a5c798f6e1e2, type: 3}
+  spikeDownSound: {fileID: 8300000, guid: 42066fcb27acd8040b0a04a96a576c09, type: 3}
+  navMesh: []
   onlyUpSpike: 0
   disableSpikeHitbox: 0
   disableAutomaticPierce: 0
+  displayBgAfterHit: 0
   interval: 2
   activeDuration: 1
   spikeUpDelay: 0.3
@@ -112,7 +116,7 @@ MonoBehaviour:
   startingAsSpikeUp: 0
   playerMask:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 8
 --- !u!61 &7354364236580374150
 BoxCollider2D:
   m_ObjectHideFlags: 0
