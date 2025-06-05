@@ -238,6 +238,10 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4428405360447579783, guid: 10ec9d771a0b28e4d9e20ec570106bc7, type: 3}
+      propertyPath: playerMask.m_Bits
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 4428405360447579783, guid: 10ec9d771a0b28e4d9e20ec570106bc7, type: 3}
       propertyPath: startingAsSpikeUp
       value: 1
       objectReference: {fileID: 0}
@@ -2843,6 +2847,10 @@ PrefabInstance:
     - target: {fileID: 4428405360447579783, guid: 10ec9d771a0b28e4d9e20ec570106bc7, type: 3}
       propertyPath: onlyUpSpike
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4428405360447579783, guid: 10ec9d771a0b28e4d9e20ec570106bc7, type: 3}
+      propertyPath: playerMask.m_Bits
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 4428405360447579783, guid: 10ec9d771a0b28e4d9e20ec570106bc7, type: 3}
       propertyPath: startingAsSpikeUp

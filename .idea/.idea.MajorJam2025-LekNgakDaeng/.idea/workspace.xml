@@ -5,7 +5,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="99024878-2e8f-4a97-a55f-bc0480fe3b04" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/Assets/Petchcious/Asset_Spikes/Scripts/SpikesRepeater_Petchcious.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Petchcious/Asset_Spikes/Scripts/SpikesRepeater_Petchcious.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.MajorJam2025-LekNgakDaeng/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.MajorJam2025-LekNgakDaeng/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Petchcious/lv3.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Petchcious/lv3.unity" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -17,7 +18,12 @@
   </component>
   <component name="HighlightingSettingsPerFile">
     <setting file="file://$PROJECT_DIR$/Assets/Petchcious/Asset_Spikes/Scripts/SpikesRepeater_Petchcious.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Petchcious/PlayAnim.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.ai.navigation@eb5635ad590d/Runtime/NavMeshModifier.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.ugui@f3fac7af1578/Runtime/UGUI/UI/Core/Button.cs" root0="SKIP_HIGHLIGHTING" />
+  </component>
+  <component name="ProblemsViewState">
+    <option name="selectedTabId" value="CurrentFile" />
   </component>
   <component name="ProjectColorInfo">{
   &quot;associatedIndex&quot;: 6
@@ -95,6 +101,7 @@
       <workItem from="1748759181055" duration="12966000" />
       <workItem from="1748851331950" duration="4748000" />
       <workItem from="1748934662800" duration="3224000" />
+      <workItem from="1749103405787" duration="1249000" />
     </task>
     <servers />
   </component>
