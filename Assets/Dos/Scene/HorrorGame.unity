@@ -6877,7 +6877,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d7d92412f6771e547b7050267db5418d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 2.5
+  speed: 1.75
   rb: {fileID: 0}
   moveDir: {x: 0, y: 0}
   kaboomAnim: {fileID: 2009978063}
