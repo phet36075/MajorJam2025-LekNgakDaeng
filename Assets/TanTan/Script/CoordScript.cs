@@ -3,7 +3,6 @@ using UnityEngine;
 public class CoordScript : MonoBehaviour
 {
     Player player => FindAnyObjectByType<Player>(); 
-    SpamGamePlayer spamGamePlayer => FindAnyObjectByType<SpamGamePlayer>();
     Goal goal => FindAnyObjectByType<Goal>();
     Enemy[] enemy => FindObjectsByType<Enemy>(FindObjectsSortMode.None);
     BoxBehaviour box => FindAnyObjectByType<BoxBehaviour>();
@@ -39,7 +38,6 @@ public class CoordScript : MonoBehaviour
     void Update()
     {
         PlayerCollide();
-        SpamPlayerCollide();
         GoalCollide();
         EnemyCollide();
         WallCollide();
@@ -60,14 +58,6 @@ public class CoordScript : MonoBehaviour
         if (Physics2D.OverlapCircle(transform.position, 0.1f, playerMask))
         {
             player.SetCoord(this);
-        }
-    }
-
-    void SpamPlayerCollide()
-    {
-        if (Physics2D.OverlapCircle(transform.position, 0.1f, spamPlayerMask))
-        {
-            spamGamePlayer.SetCoord(this);
         }
     }
 

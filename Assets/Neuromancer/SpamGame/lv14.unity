@@ -186,6 +186,7 @@ GameObject:
   m_Component:
   - component: {fileID: 606708236}
   - component: {fileID: 606708235}
+  - component: {fileID: 606708240}
   - component: {fileID: 606708237}
   - component: {fileID: 606708239}
   m_Layer: 9
@@ -323,6 +324,22 @@ CircleCollider2D:
   m_CompositeOrder: 0
   m_Offset: {x: 0, y: 0.1291666}
   m_Radius: 0.6458333
+--- !u!114 &606708240
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 606708234}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8730ccdbaa79d3c478ffc1f69b91251a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  enemyInterval: 0.2
+  enemyGrid: {fileID: 7916122059043204733}
+  Coordinate: 0
+  TargetPosition: {x: 0, y: 0}
 --- !u!1 &855901821
 GameObject:
   m_ObjectHideFlags: 0
@@ -537,7 +554,7 @@ MonoBehaviour:
   PlayerSpeedDecrement: 0.1
   PlayerInterval: 0
   PlayerGrid: {fileID: 1933930499}
-  Coordinate: {fileID: 0}
+  Coordinate: 0
   TargetPosition: {x: 0, y: 0}
 --- !u!58 &923631393
 CircleCollider2D:
@@ -575,6 +592,69 @@ CircleCollider2D:
   m_CompositeOrder: 0
   m_Offset: {x: 0, y: 0}
   m_Radius: 0.5
+--- !u!1001 &1004070266
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 3057968928018983556, guid: 58e1753f751a45644b5643ad1647012c, type: 3}
+      propertyPath: m_Name
+      value: __UI
+      objectReference: {fileID: 0}
+    - target: {fileID: 4356682691716019228, guid: 58e1753f751a45644b5643ad1647012c, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 960
+      objectReference: {fileID: 0}
+    - target: {fileID: 4356682691716019228, guid: 58e1753f751a45644b5643ad1647012c, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 540
+      objectReference: {fileID: 0}
+    - target: {fileID: 4356682691716019228, guid: 58e1753f751a45644b5643ad1647012c, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4356682691716019228, guid: 58e1753f751a45644b5643ad1647012c, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4356682691716019228, guid: 58e1753f751a45644b5643ad1647012c, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4356682691716019228, guid: 58e1753f751a45644b5643ad1647012c, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4356682691716019228, guid: 58e1753f751a45644b5643ad1647012c, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4356682691716019228, guid: 58e1753f751a45644b5643ad1647012c, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4356682691716019228, guid: 58e1753f751a45644b5643ad1647012c, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4356682691716019228, guid: 58e1753f751a45644b5643ad1647012c, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8215838617240189260, guid: 58e1753f751a45644b5643ad1647012c, type: 3}
+      propertyPath: m_text
+      value: '14
+
+'
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 58e1753f751a45644b5643ad1647012c, type: 3}
 --- !u!1001 &1090450238
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -688,7 +768,8 @@ MonoBehaviour:
   AltSpamKey: 275
   DefaultInterval: 1
   MinIntervalBonusCap: 0.1
-  EnemySpeedCapMultiplier: 0.8
+  EnemyIntervalCap: 0.8
+  IsGameEnded: 0
 --- !u!4 &1654841092
 Transform:
   m_ObjectHideFlags: 0
@@ -1831,3 +1912,4 @@ SceneRoots:
   - {fileID: 8573866851473096892}
   - {fileID: 1933930500}
   - {fileID: 2014508798}
+  - {fileID: 1004070266}

@@ -23,7 +23,7 @@ public class SpamGamePlayer : MonoBehaviour
     private NavMeshAgent navMeshAgent;
 
     [Header("Coordinate")]
-    [SerializeField] private CoordScript Coordinate;
+    [SerializeField] private int Coordinate;
     [SerializeField] private Vector2 TargetPosition;
 
     void Start()
@@ -32,16 +32,18 @@ public class SpamGamePlayer : MonoBehaviour
         navMeshAgent = GetComponent<NavMeshAgent>();
         Initialization();
         SnapToGrid();
-        StartCoroutine(Move(PlayerIntervalBonus));
+        StartCoroutine(Move());
     }
 
-    IEnumerator Move(float playerIntervalBonus)
+    IEnumerator Move()
     {
-        while (true)
-        {
-            yield return new WaitForSeconds(playerIntervalBonus);
-            TargetPosition = Coordinate.RightTile.transform.position;
-        }
+        yield return new WaitForSeconds(PlayerIntervalBonus);
+        TargetPosition = PlayerGrid.coord[Coordinate].transform.position;
+        Coordinate++;
+        if (Coordinate >= PlayerGrid.coord.Count)
+            StopCoroutine(Move());
+        else
+            StartCoroutine(Move());
     }
 
     void Initialization()
@@ -89,12 +91,5 @@ public class SpamGamePlayer : MonoBehaviour
     {
         navMeshAgent.SetDestination(TargetPosition);
         PlayerSpeedControl();
-
-        if (spamGameManager.IsGameEnded)
-        {
-            StopCoroutine(Move(PlayerIntervalBonus));
-        }
     }
-
-    public void SetCoord(CoordScript cs) => Coordinate = cs;
 }
