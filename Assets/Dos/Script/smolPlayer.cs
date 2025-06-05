@@ -8,6 +8,7 @@ public class smolPlayer : MonoBehaviour
     public Rigidbody2D rb;
     public Vector2 moveDir;
     public Animator kaboomAnim;
+    public AudioClip kaboomSound;
 
     private bool isDead;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
@@ -32,7 +33,7 @@ public class smolPlayer : MonoBehaviour
             rb.linearVelocity = Vector2.zero;
             kaboomAnim.gameObject.SetActive(true);
             kaboomAnim.Play("Kaboom");
-            Debug.Log("Dead");
+            SoundFXManager.instance.PlaySoundFXClip(kaboomSound);
             StartCoroutine(waitForBlueboiToShow());
         }
         if (collision.CompareTag("Finish"))

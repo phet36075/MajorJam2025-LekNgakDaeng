@@ -7036,6 +7036,7 @@ MonoBehaviour:
   rb: {fileID: 0}
   moveDir: {x: 0, y: 0}
   kaboomAnim: {fileID: 2009978063}
+  kaboomSound: {fileID: 8300000, guid: d331a79ae658ae0459a2bfb7d934dcd9, type: 3}
 --- !u!1 &1947399401
 GameObject:
   m_ObjectHideFlags: 0
