@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class SacrificeEnemy : MonoBehaviour
 {
-    Player player => FindAnyObjectByType<Player>();
+    SacrificeManager sm => FindObjectOfType<SacrificeManager>();
     [SerializeField] LayerMask playerMask;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
@@ -21,7 +21,7 @@ public class SacrificeEnemy : MonoBehaviour
     {
         if (Physics2D.OverlapCircle(transform.position, .52f, playerMask))
         {
-
+            sm.killAmount++;
         }
     }
 }
