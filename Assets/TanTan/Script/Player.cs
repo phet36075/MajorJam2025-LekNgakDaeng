@@ -5,6 +5,7 @@ using UnityEngine.AI;
 
 public class Player : MonoBehaviour
 {
+    SpriteRenderer sr => GetComponent<SpriteRenderer>();
     GridManager gm => FindAnyObjectByType<GridManager>();
     NavMeshAgent agent => GetComponent<NavMeshAgent>();
 
@@ -73,6 +74,7 @@ public class Player : MonoBehaviour
             if (coordinate.LeftTile.isWall || (coordinate.LeftTile.isBox && coordinate.LeftTile.LeftTile.isWall)) return;
             if (coordinate.LeftTile.isBox)
                 coordinate.LeftTile.boxBehaviour.MovingBox(coordinate.LeftTile.LeftTile);
+            sr.flipX = true;
             targetPos = coordinate.LeftTile.transform.position;
             StartCoroutine(WalkInterval(walkInterval));
             OnPlayerMoveSubscription.Instance.CheckPlayerMove();
@@ -82,6 +84,7 @@ public class Player : MonoBehaviour
             if (coordinate.RightTile.isWall || (coordinate.RightTile.isBox && coordinate.RightTile.RightTile.isWall)) return;
             if (coordinate.RightTile.isBox)
                 coordinate.RightTile.boxBehaviour.MovingBox(coordinate.RightTile.RightTile);
+            sr.flipX = false;
             targetPos = coordinate.RightTile.transform.position;
             StartCoroutine(WalkInterval(walkInterval));
             OnPlayerMoveSubscription.Instance.CheckPlayerMove();

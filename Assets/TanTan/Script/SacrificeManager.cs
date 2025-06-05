@@ -3,7 +3,7 @@ using UnityEngine;
 
 public class SacrificeManager : MonoBehaviour
 {
-    public int killAmount = 0;
+    public float killAmount = 0;
     [SerializeField] GameObject goalPrefab;
     [SerializeField] Transform spawnPoint;
     [SerializeField] Animator animator;
@@ -18,18 +18,18 @@ public class SacrificeManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        AnimationRun();
         if(killAmount >= 3 && !isSpawned)
         {
             StartCoroutine(Spawn());
             isSpawned = true;
         }
-        AnimationRun();
     }
 
 
     void AnimationRun()
     {
-        animator.SetInteger("enemyKilled", killAmount);
+        animator.SetInteger("enemyKilled", (int)killAmount);
     }
 
     IEnumerator Spawn()

@@ -5,6 +5,7 @@ using System.Collections.Generic;
 
 public class Enemy : MonoBehaviour
 {
+    SacrificeManager sm => FindAnyObjectByType<SacrificeManager>();
     WinLoseManager wlm => FindAnyObjectByType<WinLoseManager>();
     GridManager gm => FindAnyObjectByType<GridManager>();
     NavMeshAgent agent => GetComponent<NavMeshAgent>();
@@ -116,6 +117,8 @@ public class Enemy : MonoBehaviour
         {
             if(player.havWeapon)
             {
+                if(sm != null)
+                    sm.killAmount++;
                 Destroy(gameObject);
             }
             else
