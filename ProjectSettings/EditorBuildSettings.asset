@@ -27,6 +27,9 @@ EditorBuildSettings:
     path: Assets/Petchcious/lv7.unity
     guid: 4e65a72d69260834090365a8567f054e
   - enabled: 1
+    path: Assets/TanTan/Level/lv8.unity
+    guid: 76ab387d1f42b11449df387bcb3de6e3
+  - enabled: 1
     path: Assets/Petchcious/MainMenu.unity
     guid: a227701e313a2b44593a2e2d55f343dc
   - enabled: 1
