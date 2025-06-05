@@ -1,10 +1,12 @@
+using System.Collections;
 using UnityEngine;
 
 public class SacrificeManager : MonoBehaviour
 {
-    public float killAmount = 0;
+    public int killAmount = 0;
     [SerializeField] GameObject goalPrefab;
     [SerializeField] Transform spawnPoint;
+    [SerializeField] Animator animator;
     bool isSpawned = false;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
@@ -18,13 +20,22 @@ public class SacrificeManager : MonoBehaviour
     {
         if(killAmount >= 3 && !isSpawned)
         {
-            SpawnGoal();
+            StartCoroutine(Spawn());
             isSpawned = true;
         }
+        AnimationRun();
     }
 
-    void SpawnGoal()
+
+    void AnimationRun()
     {
+        animator.SetInteger("enemyKilled", killAmount);
+    }
+
+    IEnumerator Spawn()
+    {
+        animator.SetBool("isComplete", true);
+        yield return new WaitForSeconds(1f);
         Instantiate(goalPrefab, spawnPoint.position, Quaternion.identity);
     }
 }

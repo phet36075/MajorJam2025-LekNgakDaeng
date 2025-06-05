@@ -107,6 +107,7 @@ MonoBehaviour:
     m_Bits: 8
   coordinate: {fileID: 0}
   targetPos: {x: 0, y: 0}
+  isMoving: 0
 --- !u!58 &4643008031149664506
 CircleCollider2D:
   m_ObjectHideFlags: 0

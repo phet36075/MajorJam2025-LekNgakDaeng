@@ -134,10 +134,10 @@ TextureImporter:
       name: pandora_circle_two_right_side_glow_animation_0
       rect:
         serializedVersion: 2
-        x: 67
-        y: 213
-        width: 23
-        height: 20
+        x: 0
+        y: 192
+        width: 120
+        height: 96
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -156,10 +156,10 @@ TextureImporter:
       name: pandora_circle_two_right_side_glow_animation_1
       rect:
         serializedVersion: 2
-        x: 187
-        y: 213
-        width: 23
-        height: 20
+        x: 120
+        y: 192
+        width: 120
+        height: 96
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -178,10 +178,10 @@ TextureImporter:
       name: pandora_circle_two_right_side_glow_animation_2
       rect:
         serializedVersion: 2
-        x: 307
-        y: 213
-        width: 23
-        height: 20
+        x: 240
+        y: 192
+        width: 120
+        height: 96
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -200,10 +200,10 @@ TextureImporter:
       name: pandora_circle_two_right_side_glow_animation_3
       rect:
         serializedVersion: 2
-        x: 67
-        y: 117
-        width: 23
-        height: 20
+        x: 0
+        y: 96
+        width: 120
+        height: 96
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -222,10 +222,10 @@ TextureImporter:
       name: pandora_circle_two_right_side_glow_animation_4
       rect:
         serializedVersion: 2
-        x: 187
-        y: 117
-        width: 23
-        height: 24
+        x: 120
+        y: 96
+        width: 120
+        height: 96
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -244,10 +244,10 @@ TextureImporter:
       name: pandora_circle_two_right_side_glow_animation_5
       rect:
         serializedVersion: 2
-        x: 307
-        y: 117
-        width: 23
-        height: 24
+        x: 240
+        y: 96
+        width: 120
+        height: 96
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -266,10 +266,10 @@ TextureImporter:
       name: pandora_circle_two_right_side_glow_animation_6
       rect:
         serializedVersion: 2
-        x: 67
-        y: 21
-        width: 23
-        height: 24
+        x: 0
+        y: 0
+        width: 120
+        height: 96
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -288,7 +288,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 
+    spriteID: 774fae4a7750c8049b71c7a9f9366f53
     internalID: 0
     vertices: []
     indices: 
