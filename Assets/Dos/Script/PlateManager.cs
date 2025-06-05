@@ -49,10 +49,9 @@ public class PlateManager : MonoBehaviour
     {
         if (curLevel == Level.AddObj)
         {
-            objToSpawn.GetComponent<Animator>().Play("RockAppear");
+            GameObject gm = Instantiate(objToSpawn, spawnPos.position, Quaternion.identity);
+            gm.GetComponent<Animator>().Play("RockAppear");
         }
-
-
     }
     enum Level
     {
