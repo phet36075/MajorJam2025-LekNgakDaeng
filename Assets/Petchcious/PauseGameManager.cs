@@ -39,6 +39,7 @@ public class PauseGameManager : MonoBehaviour
 
         if (Input.GetKeyDown(resetKey))
         {
+            ResumeGame();
             _loadSceneAndPlayAnimation.PlayAnimationAndLoadScene(SceneIndex);
         }
         
