@@ -93,6 +93,10 @@ public class CoordScript : MonoBehaviour
         {
             isWall = true;
         }
+        else
+        {
+            isWall = false;
+        }
     }
     void BoxCollide()
     {
